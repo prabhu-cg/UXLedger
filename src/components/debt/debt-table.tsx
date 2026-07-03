@@ -30,8 +30,10 @@ import { SeverityBadge } from "./severity-badge";
 import { StatusBadge } from "./status-badge";
 import { DebtForm } from "./debt-form";
 import { DebtDetail } from "./debt-detail";
+import { StagedAttachments } from "./staged-attachments";
 import { useToast } from "@/hooks/use-toast";
 import { formatDate, cn } from "@/lib/utils";
+import { uploadAttachmentFile } from "@/lib/attachments";
 import { CATEGORY_LABELS, SEVERITY_LABELS, STATUS_LABELS, type DebtItem } from "@/types";
 import type { DebtInput } from "@/lib/validations/debt";
 
@@ -46,6 +48,7 @@ export function DebtTable({ projectId }: DebtTableProps) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
   const [createOpen, setCreateOpen] = useState(false);
+  const [stagedFiles, setStagedFiles] = useState<File[]>([]);
   const [editItem, setEditItem] = useState<DebtItem | null>(null);
   const [deleteItem, setDeleteItem] = useState<DebtItem | null>(null);
   const [viewItem, setViewItem] = useState<DebtItem | null>(null);
@@ -173,6 +176,17 @@ export function DebtTable({ projectId }: DebtTableProps) {
     if (error || !data) { toast({ variant: "destructive", title: "Error", description: error?.message }); return; }
     setItems((prev) => [data, ...prev]);
     setCreateOpen(false);
+
+    if (stagedFiles.length > 0) {
+      const results = await Promise.all(
+        stagedFiles.map((file) => uploadAttachmentFile(supabase, { file, debtItemId: data.id, userId: user.id }))
+      );
+      const failed = results.filter((r) => r.error).length;
+      setStagedFiles([]);
+      if (failed > 0) {
+        toast({ variant: "destructive", title: "Some attachments failed to upload", description: `${failed} of ${results.length} file(s) could not be attached.` });
+      }
+    }
     toast({ title: "Debt item created" });
   }
 
@@ -308,13 +322,21 @@ export function DebtTable({ projectId }: DebtTableProps) {
       </div>
 
       {/* Create drawer */}
-      <Sheet open={createOpen} onOpenChange={setCreateOpen}>
+      <Sheet
+        open={createOpen}
+        onOpenChange={(o) => {
+          setCreateOpen(o);
+          if (!o) setStagedFiles([]);
+        }}
+      >
         <SheetContent className="sm:max-w-xl">
           <SheetHeader>
             <SheetTitle>Add debt item</SheetTitle>
             <SheetDescription>Log a new UX debt item for this project</SheetDescription>
           </SheetHeader>
-          <DebtForm onSubmit={handleCreate} submitLabel="Create item" />
+          <DebtForm onSubmit={handleCreate} submitLabel="Create item">
+            <StagedAttachments files={stagedFiles} onChange={setStagedFiles} />
+          </DebtForm>
         </SheetContent>
       </Sheet>
 

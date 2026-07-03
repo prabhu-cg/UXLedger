@@ -16,9 +16,11 @@ interface DebtFormProps {
   defaultValues?: Partial<DebtItem>;
   onSubmit: (values: DebtInput) => Promise<void>;
   submitLabel?: string;
+  /** Rendered above the submit button, e.g. an attachments picker. */
+  children?: React.ReactNode;
 }
 
-export function DebtForm({ defaultValues, onSubmit, submitLabel = "Save" }: DebtFormProps) {
+export function DebtForm({ defaultValues, onSubmit, submitLabel = "Save", children }: DebtFormProps) {
   const form = useForm<DebtInput>({
     resolver: zodResolver(debtSchema),
     defaultValues: {
@@ -155,6 +157,8 @@ export function DebtForm({ defaultValues, onSubmit, submitLabel = "Save" }: Debt
             </FormItem>
           )}
         />
+
+        {children}
 
         <div className="flex justify-end pt-2">
           <Button type="submit" disabled={isSubmitting}>

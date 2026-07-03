@@ -36,7 +36,7 @@ export default function DebtPage() {
         <div className="flex-1">
           <h1 className="text-xl font-bold">Debt Register</h1>
           <p className="text-sm text-muted-foreground mt-0.5">
-            All UX debt items across your projects
+            All UX debt items for the selected project
           </p>
         </div>
         {loading ? (

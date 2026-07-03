@@ -1,16 +1,14 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Upload, File, Trash2, Download, Paperclip } from "lucide-react";
+import { Upload, File as FileIcon, Trash2, Download, Paperclip } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/hooks/use-toast";
 import { formatFileSize, formatDate } from "@/lib/utils";
+import { validateAttachmentFile, pastedImageFile, uploadAttachmentFile } from "@/lib/attachments";
 import type { Attachment } from "@/types";
-
-const ALLOWED_TYPES = ["image/png", "image/jpeg", "image/jpg", "application/pdf"];
-const MAX_SIZE = 10 * 1024 * 1024; // 10MB
 
 interface AttachmentsProps {
   debtItemId: string;
@@ -37,58 +35,52 @@ export function Attachments({ debtItemId }: AttachmentsProps) {
     load();
   }, [debtItemId]);
 
-  async function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    if (!ALLOWED_TYPES.includes(file.type)) {
-      toast({ variant: "destructive", title: "Invalid file type", description: "Only PNG, JPG, and PDF files are allowed." });
-      return;
-    }
-    if (file.size > MAX_SIZE) {
-      toast({ variant: "destructive", title: "File too large", description: "Maximum file size is 10MB." });
+  async function uploadFile(file: File) {
+    const validationError = validateAttachmentFile(file);
+    if (validationError) {
+      toast({ variant: "destructive", title: "Can't attach that file", description: validationError });
       return;
     }
 
     setUploading(true);
     const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
+    if (!user) { setUploading(false); return; }
 
-    const ext = file.name.split(".").pop();
-    const path = `${user.id}/${debtItemId}/${Date.now()}.${ext}`;
-
-    const { error: uploadError } = await supabase.storage
-      .from("attachments")
-      .upload(path, file);
-
-    if (uploadError) {
-      toast({ variant: "destructive", title: "Upload failed", description: uploadError.message });
-      setUploading(false);
-      return;
-    }
-
-    const { data, error } = await supabase
-      .from("attachments")
-      .insert({
-        debt_item_id: debtItemId,
-        uploaded_by: user.id,
-        file_name: file.name,
-        file_size: file.size,
-        mime_type: file.type,
-        storage_path: path,
-      })
-      .select()
-      .single<Attachment>();
+    const { data, error } = await uploadAttachmentFile(supabase, { file, debtItemId, userId: user.id });
 
     if (error || !data) {
-      toast({ variant: "destructive", title: "Error saving attachment", description: error?.message });
+      toast({ variant: "destructive", title: "Upload failed", description: error });
     } else {
       setAttachments((prev) => [data, ...prev]);
       toast({ title: "File uploaded", description: file.name });
     }
     setUploading(false);
+  }
+
+  async function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    await uploadFile(file);
     if (fileInputRef.current) fileInputRef.current.value = "";
   }
+
+  useEffect(() => {
+    function handlePaste(e: ClipboardEvent) {
+      const items = e.clipboardData?.items;
+      if (!items) return;
+      for (const item of items) {
+        const file = pastedImageFile(item);
+        if (file) {
+          e.preventDefault();
+          uploadFile(file);
+          break;
+        }
+      }
+    }
+    window.addEventListener("paste", handlePaste);
+    return () => window.removeEventListener("paste", handlePaste);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debtItemId]);
 
   async function handleDelete(attachment: Attachment) {
     await supabase.storage.from("attachments").remove([attachment.storage_path]);
@@ -139,12 +131,12 @@ export function Attachments({ debtItemId }: AttachmentsProps) {
           {[1, 2].map((i) => <Skeleton key={i} className="h-10 rounded-lg" />)}
         </div>
       ) : attachments.length === 0 ? (
-        <p className="text-xs text-muted-foreground py-2">No attachments yet. Upload PNG, JPG, or PDF files (max 10MB).</p>
+        <p className="text-xs text-muted-foreground py-2">No attachments yet. Upload or paste (⌘/Ctrl+V) a screenshot — PNG, JPG, or PDF, max 10MB.</p>
       ) : (
         <ul className="space-y-1.5">
           {attachments.map((a) => (
             <li key={a.id} className="flex items-center gap-3 rounded-lg border border-border px-3 py-2 bg-muted/30">
-              <File className="h-4 w-4 text-muted-foreground shrink-0" />
+              <FileIcon className="h-4 w-4 text-muted-foreground shrink-0" />
               <div className="flex-1 min-w-0">
                 <p className="text-xs font-medium truncate">{a.file_name}</p>
                 <p className="text-[10px] text-muted-foreground">
