@@ -39,7 +39,12 @@ export const updatePasswordSchema = z
     path: ["confirm_password"],
   });
 
+export const updateProfileSchema = z.object({
+  full_name: z.string().min(2, "Name must be at least 2 characters").max(100),
+});
+
 export type LoginInput = z.infer<typeof loginSchema>;
 export type RegisterInput = z.infer<typeof registerSchema>;
 export type ResetPasswordInput = z.infer<typeof resetPasswordSchema>;
 export type UpdatePasswordInput = z.infer<typeof updatePasswordSchema>;
+export type UpdateProfileInput = z.infer<typeof updateProfileSchema>;

@@ -31,7 +31,7 @@ export default function DebtPage() {
   }, []);
 
   return (
-    <div className="p-6 max-w-[1400px]">
+    <div className="p-6 max-w-[1440px] mx-auto">
       <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
         <div className="flex-1">
           <h1 className="text-xl font-bold">Debt Register</h1>

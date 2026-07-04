@@ -60,23 +60,36 @@ export function Topbar({ profile, heading }: TopbarProps) {
           size="icon"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           aria-label="Toggle theme"
+          className="hover:bg-primary hover:text-primary-foreground"
         >
           <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
         </Button>
 
         {/* Notifications */}
-        <Button variant="ghost" size="icon" aria-label="Notifications">
+        <Button
+          variant="ghost"
+          size="icon"
+          aria-label="Notifications"
+          className="hover:bg-primary hover:text-primary-foreground"
+        >
           <Bell className="h-4 w-4" />
         </Button>
 
         {/* Profile menu */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="rounded-full" aria-label="Account menu">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="group rounded-full hover:bg-primary"
+              aria-label="Account menu"
+            >
               <Avatar className="h-8 w-8">
                 <AvatarImage src={profile?.avatar_url ?? undefined} alt={profile?.full_name ?? ""} />
-                <AvatarFallback>{getInitials(profile?.full_name)}</AvatarFallback>
+                <AvatarFallback className="group-hover:bg-transparent group-hover:text-primary-foreground">
+                  {getInitials(profile?.full_name)}
+                </AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>

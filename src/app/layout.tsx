@@ -12,7 +12,7 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | UXLedger",
+    template: "%s - UXLedger",
     default: "UXLedger — Better experience, Lower debt",
   },
   description:

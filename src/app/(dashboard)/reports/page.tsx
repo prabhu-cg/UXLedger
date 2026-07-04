@@ -112,7 +112,7 @@ export default function ReportsPage() {
   }
 
   return (
-    <div className="p-6 max-w-[1400px] space-y-6">
+    <div className="p-6 max-w-[1440px] mx-auto space-y-6">
       <div>
         <h1 className="text-xl font-bold">Reports</h1>
         <p className="text-sm text-muted-foreground mt-0.5">
