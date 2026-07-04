@@ -46,7 +46,7 @@ export function Sidebar() {
       >
         {/* Header */}
         <div className="flex items-center justify-between h-16 px-5 border-b border-sidebar-border shrink-0">
-          <Logo variant="auto" size="sm" />
+          <Logo variant="auto" size="sm" taglineClassName="text-[10px]" />
           <Button
             variant="ghost"
             size="icon"

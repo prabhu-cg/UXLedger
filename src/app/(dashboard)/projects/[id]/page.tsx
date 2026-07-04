@@ -33,7 +33,7 @@ export default async function ProjectPage({ params }: Props) {
   if (!project) notFound();
 
   return (
-    <div className="p-6 max-w-[1400px]">
+    <div className="p-6 max-w-[1440px] mx-auto">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-1.5 text-sm text-muted-foreground mb-6">
         <Link href="/projects" className="hover:text-foreground transition-colors flex items-center gap-1">

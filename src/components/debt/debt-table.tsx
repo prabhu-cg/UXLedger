@@ -31,6 +31,7 @@ import { StatusBadge } from "./status-badge";
 import { DebtForm } from "./debt-form";
 import { DebtDetail } from "./debt-detail";
 import { StagedAttachments } from "./staged-attachments";
+import { Attachments } from "./attachments";
 import { useToast } from "@/hooks/use-toast";
 import { formatDate, cn } from "@/lib/utils";
 import { uploadAttachmentFile } from "@/lib/attachments";
@@ -346,7 +347,11 @@ export function DebtTable({ projectId }: DebtTableProps) {
           <SheetHeader>
             <SheetTitle>Edit debt item</SheetTitle>
           </SheetHeader>
-          {editItem && <DebtForm defaultValues={editItem} onSubmit={handleEdit} submitLabel="Save changes" />}
+          {editItem && (
+            <DebtForm defaultValues={editItem} onSubmit={handleEdit} submitLabel="Save changes">
+              <Attachments debtItemId={editItem.id} />
+            </DebtForm>
+          )}
         </SheetContent>
       </Sheet>
 
