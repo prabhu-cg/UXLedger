@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Logo } from "@/components/layout/logo";
 
 export const metadata: Metadata = {
@@ -34,7 +35,9 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
           {/* Logo */}
           <div className="relative">
-            <Logo variant="light" />
+            <Link href="/">
+              <Logo variant="light" showTagline={false} />
+            </Link>
           </div>
 
           {/* Quote */}
@@ -68,7 +71,9 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           <div className="w-full max-w-sm">
             {/* Logo above card */}
             <div className="flex flex-col items-center mb-6 sm:mb-8">
-              <Logo size="lg" showTagline />
+              <Link href="/">
+                <Logo size="lg" layout="stack" showTagline taglineClassName="text-[14px]" />
+              </Link>
             </div>
             {/* Card */}
             <div className="rounded-2xl border border-border bg-white p-7">

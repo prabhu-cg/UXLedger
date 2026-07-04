@@ -5,6 +5,8 @@ interface LogoProps {
   showTagline?: boolean;
   className?: string;
   size?: "sm" | "md" | "lg";
+  layout?: "row" | "stack";
+  taglineClassName?: string;
 }
 
 export function Logo({
@@ -12,6 +14,8 @@ export function Logo({
   showTagline = true,
   className,
   size = "md",
+  layout = "row",
+  taglineClassName,
 }: LogoProps) {
   const iconSize = size === "sm" ? 28 : size === "lg" ? 48 : 36;
   const markColor = variant === "light" ? "#ffffff" : "#555555";
@@ -21,7 +25,13 @@ export function Logo({
   const checkmarkColor = variant === "light" ? "#ffffff" : orangeColor;
 
   return (
-    <div className={cn("flex items-center gap-3", className)}>
+    <div
+      className={cn(
+        "flex",
+        layout === "stack" ? "flex-col items-center gap-2" : "items-center gap-3",
+        className
+      )}
+    >
       <svg
         width={iconSize}
         height={Math.round(iconSize * 1.18)}
@@ -45,15 +55,24 @@ export function Logo({
         <path d="M59 47.75C60.1046 47.75 61 48.6454 61 49.75C61 50.8546 60.1046 51.75 59 51.75H35C33.8954 51.75 33 50.8546 33 49.75C33 48.6454 33.8954 47.75 35 47.75H59Z" fill={variant === "auto" ? "var(--mark-color, #555555)" : markColor} />
         <path d="M59 30.75C60.1046 30.75 61 31.6454 61 32.75C61 33.8546 60.1046 34.75 59 34.75H35C33.8954 34.75 33 33.8546 33 32.75C33 31.6454 33.8954 30.75 35 30.75H59Z" fill={variant === "auto" ? "var(--mark-color, #555555)" : markColor} />
       </svg>
-      <div className="flex flex-col leading-none">
+      <div
+        className={cn(
+          "flex flex-col leading-none",
+          layout === "stack" && "items-center text-center"
+        )}
+      >
         <span
           className={cn(
             "font-bold tracking-tight",
-            size === "sm" ? "text-base" : size === "lg" ? "text-2xl" : "text-xl",
-            variant === "light" ? "text-white" : "text-foreground"
+            size === "sm" ? "text-base" : size === "lg" ? "text-2xl" : "text-xl"
           )}
         >
-          UXLedger
+          <span className={variant === "light" ? "text-white" : "text-foreground"}>
+            UX
+          </span>
+          <span className={variant === "light" ? "text-white" : "text-primary"}>
+            Ledger
+          </span>
         </span>
         {showTagline && (
           <span
@@ -62,7 +81,8 @@ export function Logo({
               size === "sm" ? "text-[9px]" : "text-[10px]",
               variant === "light"
                 ? "text-white/50"
-                : "text-muted-foreground"
+                : "text-muted-foreground",
+              taglineClassName
             )}
           >
             Better experience, Lower debt
