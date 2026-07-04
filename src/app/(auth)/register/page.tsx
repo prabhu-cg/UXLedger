@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { RegisterForm } from "@/components/auth/register-form";
 
-export const metadata: Metadata = { title: "Create account" };
+export const metadata: Metadata = { title: { absolute: "Signup - UXLedger" } };
 
 export default function RegisterPage() {
   return (

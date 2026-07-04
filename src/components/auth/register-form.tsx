@@ -67,7 +67,7 @@ export function RegisterForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Work email</FormLabel>
+              <FormLabel>Email address</FormLabel>
               <FormControl>
                 <Input type="email" placeholder="you@company.com" autoComplete="email" {...field} />
               </FormControl>
