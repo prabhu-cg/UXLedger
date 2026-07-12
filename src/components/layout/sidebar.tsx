@@ -74,7 +74,7 @@ export function Sidebar() {
                         "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
                         active
                           ? "bg-primary text-white"
-                          : "text-sidebar-foreground hover:bg-[#fff7e3] hover:text-sidebar-accent-foreground"
+                          : "text-sidebar-foreground hover:bg-[#FFFAEF] hover:text-sidebar-accent-foreground"
                       )}
                       aria-current={active ? "page" : undefined}
                     >
@@ -96,7 +96,7 @@ export function Sidebar() {
               "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
               pathname.startsWith("/settings")
                 ? "bg-primary text-white"
-                : "text-sidebar-foreground hover:bg-[#fff7e3] hover:text-sidebar-accent-foreground"
+                : "text-sidebar-foreground hover:bg-[#FFFAEF] hover:text-sidebar-accent-foreground"
             )}
           >
             <Settings className="h-4 w-4 shrink-0" />

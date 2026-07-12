@@ -13,7 +13,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         {/* Left brand panel */}
         <div
           className="hidden lg:flex lg:w-[58%] relative flex-col justify-between p-12 overflow-hidden"
-          style={{ backgroundColor: "#ee661d" }}
+          style={{ backgroundColor: "#C74504" }}
         >
           {/* Watermark logo mark */}
           <div className="absolute inset-y-0 right-0 translate-x-1/2 pointer-events-none select-none flex items-center">
@@ -66,7 +66,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         {/* Right form area */}
         <div
           className="flex-1 flex flex-col items-center justify-center px-6 py-8 sm:py-12"
-          style={{ backgroundColor: "#FFF9EB" }}
+          style={{ backgroundColor: "#FFFAEF" }}
         >
           <div className="w-full max-w-sm">
             {/* Logo above card */}

@@ -19,7 +19,7 @@ export function Logo({
 }: LogoProps) {
   const iconSize = size === "sm" ? 28 : size === "lg" ? 48 : 36;
   const markColor = variant === "light" ? "#ffffff" : "#555555";
-  const orangeColor = "#FC610F";
+  const orangeColor = "#C74504";
   // On the "light" variant the mark sits on an orange brand background,
   // so the checkmark accent must be white to stay visible against it.
   const checkmarkColor = variant === "light" ? "#ffffff" : orangeColor;
