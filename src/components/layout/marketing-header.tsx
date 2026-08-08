@@ -7,7 +7,7 @@ export function MarketingHeader() {
     <header className="border-b border-border">
       <div className="mx-auto max-w-6xl flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link href="/">
-          <Logo />
+          <Logo size="sm" />
         </Link>
         <div className="flex items-center gap-2">
           <Button variant="ghost" asChild>

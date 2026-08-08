@@ -1,24 +1,122 @@
 export function AboutContent() {
   return (
     <div className="space-y-4 text-sm leading-relaxed text-muted-foreground">
-      <p>
-        UXLedger exists because UX debt usually lives in the worst possible
-        place: a spreadsheet nobody opens twice, a Slack thread that gets
-        buried, or a designer&apos;s memory. It gets found, then forgotten,
-        then rediscovered by a customer months later.
-      </p>
-      <p>
-        We built UXLedger to give usability, accessibility, and content
-        issues the same rigor engineering teams give bugs — a register, a
-        severity, an owner, and a status that moves. Every project gets a
-        health score so you can see, at a glance, whether the experience is
-        getting better or worse.
-      </p>
-      <p>
-        UXLedger is a small, focused tool: log debt, prioritise it, track it
-        on a dashboard, and export it when you need to make the case to the
-        rest of the team.
-      </p>
+      <section>
+        <h3 className="mb-1.5 text-sm font-bold text-foreground">Why UXLedger Exists</h3>
+        <p>
+          UX debt usually lives in the worst possible place: a spreadsheet
+          nobody opens twice, a Slack thread that gets buried, or a
+          designer&apos;s memory. It gets found, then forgotten, then
+          rediscovered by a customer months later — after it&apos;s already
+          cost you trust.
+        </p>
+        <p className="mt-3">
+          UXLedger gives usability, accessibility, and content issues the
+          same rigor engineering teams give bugs: a register, a severity, an
+          owner, and a status that moves. Every project gets a health score
+          so you can see, at a glance, whether the experience is getting
+          better or worse.
+        </p>
+      </section>
+
+      <section>
+        <h3 className="mb-1.5 text-sm font-bold text-foreground">What It Tracks</h3>
+        <ul className="list-disc space-y-1 pl-5">
+          <li>
+            <span className="font-medium text-foreground">9 debt categories</span> — usability,
+            accessibility, content, design system, visual design, interaction
+            design, technical constraint, performance, and research findings.
+          </li>
+          <li>
+            <span className="font-medium text-foreground">4 severity levels</span> — critical,
+            high, medium, and low, each weighted differently in the health score.
+          </li>
+          <li>
+            <span className="font-medium text-foreground">5 statuses</span> — open, in progress,
+            resolved, won&apos;t fix, and deferred, so nothing sits unaccounted for.
+          </li>
+          <li>
+            <span className="font-medium text-foreground">Health score</span> — a weighted
+            composite across open, unresolved items that moves as you fix things.
+          </li>
+          <li>
+            <span className="font-medium text-foreground">CSV &amp; Excel export</span> — for
+            stakeholder reviews and reporting outside the app.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h3 className="mb-1.5 text-sm font-bold text-foreground">Tech Stack</h3>
+        <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-muted-foreground/70">Frontend</p>
+            <p className="text-foreground">Next.js (App Router, Turbopack)</p>
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-wide text-muted-foreground/70">Styling</p>
+            <p className="text-foreground">Tailwind CSS</p>
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-wide text-muted-foreground/70">Language</p>
+            <p className="text-foreground">TypeScript</p>
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-wide text-muted-foreground/70">Backend</p>
+            <p className="text-foreground">Supabase (Postgres, Auth, Storage)</p>
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-wide text-muted-foreground/70">Forms &amp; Validation</p>
+            <p className="text-foreground">React Hook Form + Zod</p>
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-wide text-muted-foreground/70">Tables &amp; Charts</p>
+            <p className="text-foreground">TanStack Table + Recharts</p>
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-wide text-muted-foreground/70">Rich Text</p>
+            <p className="text-foreground">Tiptap</p>
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-wide text-muted-foreground/70">Hosting</p>
+            <p className="text-foreground">Vercel (Fluid Compute)</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 className="mb-1.5 text-sm font-bold text-foreground">Who Built This</h3>
+        <p>
+          UXLedger is an independent side project by{" "}
+          <a
+            href="mailto:prabhu_cg@proton.me"
+            className="text-primary hover:underline"
+          >
+            Prabhu Raja
+          </a>
+          , a product designer with 15+ years across enterprise and B2B
+          software — currently VP of User Experience at BNY, previously at
+          Thomson Reuters HighQ, Sweepr, and Marston Holdings. Day to day,
+          that work centres on design systems, accessibility, and turning
+          ambiguous, high-stakes workflows into clear, systemised outcomes.
+        </p>
+        <p className="mt-3">
+          UXLedger is a small, focused tool: log debt, prioritise it, track
+          it on a dashboard, and export it when you need to make the case to
+          the rest of the team — the same discipline applied to UX findings
+          that engineering teams already apply to bugs.
+        </p>
+        <p className="mt-3">
+          Feedback, feature requests, or just want to say hello —{" "}
+          <a
+            href="mailto:prabhu_cg@proton.me"
+            className="text-primary hover:underline"
+          >
+            prabhu_cg@proton.me
+          </a>
+          .
+        </p>
+      </section>
     </div>
   );
 }

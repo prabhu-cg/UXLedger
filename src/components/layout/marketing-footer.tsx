@@ -14,7 +14,7 @@ export function MarketingFooter() {
     <footer className="border-t bg-background">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-12 sm:flex-row sm:justify-between sm:px-6 lg:px-8">
         <Link href="/">
-          <Logo size="sm" showTagline={false} />
+          <Logo size="sm" />
         </Link>
         <p className="text-sm text-muted-foreground">
           © {new Date().getFullYear()} UXLedger. Better experience, Lower debt.
@@ -24,7 +24,7 @@ export function MarketingFooter() {
             <DialogTrigger className="text-sm text-muted-foreground transition-colors hover:text-foreground">
               About
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="max-w-2xl">
               <DialogHeader>
                 <DialogTitle>About UXLedger</DialogTitle>
               </DialogHeader>

@@ -77,8 +77,7 @@ export function Logo({
         {showTagline && (
           <span
             className={cn(
-              "font-medium mt-0.5",
-              size === "sm" ? "text-[9px]" : "text-[10px]",
+              "font-semibold mt-0.5 text-[11px]",
               variant === "light"
                 ? "text-white/50"
                 : "text-muted-foreground",
