@@ -4,7 +4,7 @@ import { Logo } from "@/components/layout/logo";
 
 export function MarketingHeader() {
   return (
-    <header className="border-b border-border">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto max-w-6xl flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link href="/">
           <Logo size="sm" />
