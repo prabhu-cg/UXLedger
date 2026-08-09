@@ -3,8 +3,9 @@ import { cn } from "@/lib/utils";
 interface LogoProps {
   variant?: "light" | "dark" | "auto";
   showTagline?: boolean;
+  iconOnly?: boolean;
   className?: string;
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
   layout?: "row" | "stack";
   taglineClassName?: string;
 }
@@ -12,12 +13,13 @@ interface LogoProps {
 export function Logo({
   variant = "auto",
   showTagline = true,
+  iconOnly = false,
   className,
   size = "md",
   layout = "row",
   taglineClassName,
 }: LogoProps) {
-  const iconSize = size === "sm" ? 28 : size === "lg" ? 48 : 36;
+  const iconSize = size === "xs" ? 24 : size === "sm" ? 28 : size === "lg" ? 48 : 36;
   const markColor = variant === "light" ? "#ffffff" : "#555555";
   const orangeColor = "#C74504";
   // On the "light" variant the mark sits on an orange brand background,
@@ -27,8 +29,10 @@ export function Logo({
   return (
     <div
       className={cn(
-        "flex",
-        layout === "stack" ? "flex-col items-center gap-2" : "items-center gap-3",
+        "flex transition-[gap] duration-300 ease-in-out",
+        layout === "stack"
+          ? "flex-col items-center gap-2"
+          : cn("items-center", iconOnly ? "gap-0" : "gap-3"),
         className
       )}
     >
@@ -58,13 +62,24 @@ export function Logo({
       <div
         className={cn(
           "flex flex-col leading-none",
-          layout === "stack" && "items-center text-center"
+          layout === "stack"
+            ? "items-center text-center"
+            : cn(
+                "overflow-hidden whitespace-nowrap transition-[max-width,opacity] duration-300 ease-in-out",
+                iconOnly ? "max-w-0 opacity-0" : "max-w-[170px] opacity-100"
+              )
         )}
       >
         <span
           className={cn(
             "font-bold tracking-tight",
-            size === "sm" ? "text-base" : size === "lg" ? "text-2xl" : "text-xl"
+            size === "xs"
+              ? "text-sm"
+              : size === "sm"
+              ? "text-base"
+              : size === "lg"
+              ? "text-2xl"
+              : "text-xl"
           )}
         >
           <span className={variant === "light" ? "text-white" : "text-foreground"}>

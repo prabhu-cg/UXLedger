@@ -16,13 +16,14 @@ import type { Comment, Profile } from "@/types";
 
 interface CommentsProps {
   debtItemId: string;
+  readOnly?: boolean;
 }
 
 interface CommentWithAuthor extends Comment {
   author: Profile | undefined;
 }
 
-export function Comments({ debtItemId }: CommentsProps) {
+export function Comments({ debtItemId, readOnly = false }: CommentsProps) {
   const [comments, setComments] = useState<CommentWithAuthor[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentUserId, setCurrentUserId] = useState<string>("");
@@ -118,7 +119,7 @@ export function Comments({ debtItemId }: CommentsProps) {
                   {comment.edited_at && <span className="text-[10px] text-muted-foreground">(edited)</span>}
                 </div>
 
-                {editingId === comment.id ? (
+                {!readOnly && editingId === comment.id ? (
                   <div className="space-y-2">
                     <Textarea
                       value={editBody}
@@ -138,7 +139,7 @@ export function Comments({ debtItemId }: CommentsProps) {
                 ) : (
                   <div className="group relative">
                     <p className="text-sm whitespace-pre-wrap">{comment.body}</p>
-                    {comment.author_id === currentUserId && (
+                    {!readOnly && comment.author_id === currentUserId && (
                       <div className="flex gap-1 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
                         <Button variant="ghost" size="sm" className="h-6 px-1.5 text-xs gap-1 text-muted-foreground" onClick={() => { setEditingId(comment.id); setEditBody(comment.body); }}>
                           <Pencil className="h-3 w-3" /> Edit
@@ -163,15 +164,16 @@ export function Comments({ debtItemId }: CommentsProps) {
         </Avatar>
         <div className="flex-1 space-y-2">
           <Textarea
-            placeholder="Add a comment..."
+            placeholder={readOnly ? "Comments are disabled for sample projects" : "Add a comment..."}
             rows={2}
             className="text-sm resize-none"
+            disabled={readOnly}
             {...form.register("body")}
           />
           {form.formState.errors.body && (
             <p className="text-xs text-destructive">{form.formState.errors.body.message}</p>
           )}
-          <Button type="submit" size="sm" disabled={form.formState.isSubmitting} className="h-7 text-xs">
+          <Button type="submit" size="sm" disabled={readOnly || form.formState.isSubmitting} className="h-7 text-xs">
             {form.formState.isSubmitting && <Loader2 className="mr-1.5 h-3 w-3 animate-spin" />}
             Post comment
           </Button>

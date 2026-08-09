@@ -13,9 +13,10 @@ import type { DebtItem } from "@/types";
 interface DebtDetailProps {
   item: DebtItem;
   onClose: () => void;
+  readOnly?: boolean;
 }
 
-export function DebtDetail({ item }: DebtDetailProps) {
+export function DebtDetail({ item, readOnly = false }: DebtDetailProps) {
   return (
     <>
       <SheetHeader>
@@ -64,10 +65,10 @@ export function DebtDetail({ item }: DebtDetailProps) {
       )}
 
       <Separator />
-      <Attachments debtItemId={item.id} />
+      <Attachments debtItemId={item.id} readOnly={readOnly} />
 
       <Separator />
-      <Comments debtItemId={item.id} />
+      <Comments debtItemId={item.id} readOnly={readOnly} />
     </>
   );
 }

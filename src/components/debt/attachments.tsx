@@ -12,9 +12,10 @@ import type { Attachment } from "@/types";
 
 interface AttachmentsProps {
   debtItemId: string;
+  readOnly?: boolean;
 }
 
-export function Attachments({ debtItemId }: AttachmentsProps) {
+export function Attachments({ debtItemId, readOnly = false }: AttachmentsProps) {
   const [attachments, setAttachments] = useState<Attachment[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
@@ -65,6 +66,7 @@ export function Attachments({ debtItemId }: AttachmentsProps) {
   }
 
   useEffect(() => {
+    if (readOnly) return;
     function handlePaste(e: ClipboardEvent) {
       const items = e.clipboardData?.items;
       if (!items) return;
@@ -80,7 +82,7 @@ export function Attachments({ debtItemId }: AttachmentsProps) {
     window.addEventListener("paste", handlePaste);
     return () => window.removeEventListener("paste", handlePaste);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debtItemId]);
+  }, [debtItemId, readOnly]);
 
   async function handleDelete(attachment: Attachment) {
     await supabase.storage.from("attachments").remove([attachment.storage_path]);
@@ -118,7 +120,7 @@ export function Attachments({ debtItemId }: AttachmentsProps) {
             size="sm"
             className="h-7 text-xs gap-1.5"
             onClick={() => fileInputRef.current?.click()}
-            disabled={uploading}
+            disabled={uploading || readOnly}
           >
             <Upload className="h-3 w-3" />
             {uploading ? "Uploading…" : "Upload"}
@@ -131,7 +133,11 @@ export function Attachments({ debtItemId }: AttachmentsProps) {
           {[1, 2].map((i) => <Skeleton key={i} className="h-10 rounded-lg" />)}
         </div>
       ) : attachments.length === 0 ? (
-        <p className="text-xs text-muted-foreground py-2">No attachments yet. Upload or paste (⌘/Ctrl+V) a screenshot — PNG, JPG, or PDF, max 10MB.</p>
+        <p className="text-xs text-muted-foreground py-2">
+          {readOnly
+            ? "No attachments yet."
+            : "No attachments yet. Upload or paste (⌘/Ctrl+V) a screenshot — PNG, JPG, or PDF, max 10MB."}
+        </p>
       ) : (
         <ul className="space-y-1.5">
           {attachments.map((a) => (
@@ -147,9 +153,11 @@ export function Attachments({ debtItemId }: AttachmentsProps) {
                 <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => handleDownload(a)} aria-label="Download">
                   <Download className="h-3 w-3" />
                 </Button>
-                <Button variant="ghost" size="icon" className="h-6 w-6 text-destructive hover:text-destructive" onClick={() => handleDelete(a)} aria-label="Delete">
-                  <Trash2 className="h-3 w-3" />
-                </Button>
+                {!readOnly && (
+                  <Button variant="ghost" size="icon" className="h-6 w-6 text-destructive hover:text-destructive" onClick={() => handleDelete(a)} aria-label="Delete">
+                    <Trash2 className="h-3 w-3" />
+                  </Button>
+                )}
               </div>
             </li>
           ))}

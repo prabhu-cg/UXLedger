@@ -5,6 +5,7 @@ import Link from "next/link";
 import { MoreHorizontal, Pencil, Trash2, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,7 +24,8 @@ import {
 import { ProjectForm } from "./project-form";
 import type { Project } from "@/types";
 import type { ProjectInput } from "@/lib/validations/project";
-import { formatDate } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
+import { isSampleProject } from "@/lib/sample-projects";
 
 interface ProjectCardProps {
   project: Project;
@@ -36,6 +38,7 @@ export function ProjectCard({ project, debtCount = 0, onUpdate, onDelete }: Proj
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const isSample = isSampleProject(project.name);
 
   async function handleEdit(values: ProjectInput) {
     await onUpdate(values);
@@ -51,7 +54,7 @@ export function ProjectCard({ project, debtCount = 0, onUpdate, onDelete }: Proj
 
   return (
     <>
-      <Card className="group">
+      <Card className={cn("group", isSample && "border-dashed bg-muted/30")}>
         <CardContent className="p-5">
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-start gap-3 min-w-0">
@@ -61,7 +64,17 @@ export function ProjectCard({ project, debtCount = 0, onUpdate, onDelete }: Proj
                 aria-hidden="true"
               />
               <div className="min-w-0">
-                <h3 className="font-semibold text-sm truncate">{project.name}</h3>
+                <div className="flex items-center gap-1.5">
+                  <h3 className="font-semibold text-sm truncate">{project.name}</h3>
+                  {isSample && (
+                    <Badge
+                      variant="outline"
+                      className="shrink-0 border-transparent bg-blue-100 font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
+                    >
+                      Sample
+                    </Badge>
+                  )}
+                </div>
                 {project.description && (
                   <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">
                     {project.description}
@@ -69,30 +82,32 @@ export function ProjectCard({ project, debtCount = 0, onUpdate, onDelete }: Proj
                 )}
               </div>
             </div>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-7 w-7 opacity-0 group-hover:opacity-100 transition-opacity"
-                  aria-label="Project options"
-                >
-                  <MoreHorizontal className="h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setEditOpen(true)}>
-                  <Pencil className="mr-2 h-4 w-4" /> Edit
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem
-                  onClick={() => setDeleteOpen(true)}
-                  className="text-destructive focus:text-destructive"
-                >
-                  <Trash2 className="mr-2 h-4 w-4" /> Delete
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            {!isSample && (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-7 w-7 opacity-0 group-hover:opacity-100 transition-opacity"
+                    aria-label="Project options"
+                  >
+                    <MoreHorizontal className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => setEditOpen(true)}>
+                    <Pencil className="mr-2 h-4 w-4" /> Edit
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    onClick={() => setDeleteOpen(true)}
+                    className="text-destructive focus:text-destructive"
+                  >
+                    <Trash2 className="mr-2 h-4 w-4" /> Delete
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
           </div>
 
           <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground">

@@ -40,9 +40,10 @@ import type { DebtInput } from "@/lib/validations/debt";
 
 interface DebtTableProps {
   projectId: string;
+  readOnly?: boolean;
 }
 
-export function DebtTable({ projectId }: DebtTableProps) {
+export function DebtTable({ projectId, readOnly = false }: DebtTableProps) {
   const [items, setItems] = useState<DebtItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -139,16 +140,20 @@ export function DebtTable({ projectId }: DebtTableProps) {
             <DropdownMenuItem onClick={() => setViewItem(row.original)}>
               <Eye className="mr-2 h-4 w-4" /> View details
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setEditItem(row.original)}>
-              <Pencil className="mr-2 h-4 w-4" /> Edit
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={() => setDeleteItem(row.original)}
-              className="text-destructive focus:text-destructive"
-            >
-              <Trash2 className="mr-2 h-4 w-4" /> Delete
-            </DropdownMenuItem>
+            {!readOnly && (
+              <>
+                <DropdownMenuItem onClick={() => setEditItem(row.original)}>
+                  <Pencil className="mr-2 h-4 w-4" /> Edit
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={() => setDeleteItem(row.original)}
+                  className="text-destructive focus:text-destructive"
+                >
+                  <Trash2 className="mr-2 h-4 w-4" /> Delete
+                </DropdownMenuItem>
+              </>
+            )}
           </DropdownMenuContent>
         </DropdownMenu>
       ),
@@ -253,9 +258,11 @@ export function DebtTable({ projectId }: DebtTableProps) {
               </SelectContent>
             </Select>
           </div>
-          <Button onClick={() => setCreateOpen(true)}>
-            <Plus className="mr-2 h-4 w-4" /> Add debt item
-          </Button>
+          {!readOnly && (
+            <Button onClick={() => setCreateOpen(true)}>
+              <Plus className="mr-2 h-4 w-4" /> Add debt item
+            </Button>
+          )}
         </div>
 
         {/* Table */}
@@ -376,7 +383,9 @@ export function DebtTable({ projectId }: DebtTableProps) {
       {/* Detail view */}
       <Sheet open={!!viewItem} onOpenChange={(o) => !o && setViewItem(null)}>
         <SheetContent className="sm:max-w-xl">
-          {viewItem && <DebtDetail item={viewItem} onClose={() => setViewItem(null)} />}
+          {viewItem && (
+            <DebtDetail item={viewItem} onClose={() => setViewItem(null)} readOnly={readOnly} />
+          )}
         </SheetContent>
       </Sheet>
     </>

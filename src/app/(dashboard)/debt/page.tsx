@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 import { DebtTable } from "@/components/debt/debt-table";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
+import { isSampleProject } from "@/lib/sample-projects";
 import type { Project } from "@/types";
 
 export default function DebtPage() {
@@ -61,7 +62,12 @@ export default function DebtPage() {
       </div>
 
       {!loading && selectedProject ? (
-        <DebtTable projectId={selectedProject} />
+        <DebtTable
+          projectId={selectedProject}
+          readOnly={isSampleProject(
+            projects.find((p) => p.id === selectedProject)?.name ?? ""
+          )}
+        />
       ) : !loading && projects.length === 0 ? (
         <p className="text-sm text-muted-foreground">
           Create a project first to start adding debt items.
