@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LoginForm } from "@/components/auth/login-form";
 
-export const metadata: Metadata = { title: { absolute: "Signin - UXLedger" } };
+export const metadata: Metadata = { title: { absolute: "Sign in - UXLedger" } };
 
 export default function LoginPage() {
   return (
     <>
       <div className="mb-5">
-        <h2 className="text-lg font-semibold">Sign in</h2>
+        <h2 className="text-lg font-extrabold tracking-[-0.025em]">Sign in</h2>
         <p className="text-sm text-muted-foreground mt-1">
           Enter your email and password to access your account
         </p>

@@ -1,6 +1,8 @@
-export function AboutContent() {
+import { cn } from "@/lib/utils";
+
+export function AboutContent({ className }: { className?: string }) {
   return (
-    <div className="space-y-4 text-sm leading-relaxed text-muted-foreground">
+    <div className={cn("space-y-4 text-sm leading-relaxed text-muted-foreground", className)}>
       <section>
         <h3 className="mb-1.5 text-sm font-bold text-foreground">Why UXLedger Exists</h3>
         <p>
@@ -85,33 +87,37 @@ export function AboutContent() {
       </section>
 
       <section>
-        <h3 className="mb-1.5 text-sm font-bold text-foreground">Who Built This</h3>
+        <h3 className="mb-1.5 text-sm font-bold text-foreground">Who built UXLedger, and why</h3>
         <p>
-          UXLedger is an independent side project by{" "}
+          UXLedger was built by me, Prabhu Raja, a senior designer with 15+ years of
+          experience across four industries. I work on enterprise products, design
+          systems and digital experiences, with a simple aim: designing clarity from
+          complexity.
+        </p>
+        <p className="mt-3">
+          I built it because my process ends with measuring the result, and UX debt
+          rarely gets measured. The four steps are to understand the problem, simplify
+          it, systemise the solution and measure what changed. UXLedger applies that
+          same discipline to UX findings, giving them the structure engineering teams
+          already give to bugs.
+        </p>
+        <p className="mt-3">
+          It is an independent project. I scoped, designed and built it myself, with
+          AI in the loop, as part of how I now take products from idea to shipped.
+          You can see more of my work at{" "}
           <a
-            href="mailto:prabhu_cg@proton.me"
-            className="text-primary hover:underline"
+            href="https://prabhuraja.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-foreground underline underline-offset-4 hover:no-underline"
           >
-            Prabhu Raja
+            prabhuraja.vercel.app
           </a>
-          , a product designer with 15+ years across enterprise and B2B
-          software — currently VP of User Experience at BNY, previously at
-          Thomson Reuters HighQ, Sweepr, and Marston Holdings. Day to day,
-          that work centres on design systems, accessibility, and turning
-          ambiguous, high-stakes workflows into clear, systemised outcomes.
+          .
         </p>
         <p className="mt-3">
-          UXLedger is a small, focused tool: log debt, prioritise it, track
-          it on a dashboard, and export it when you need to make the case to
-          the rest of the team — the same discipline applied to UX findings
-          that engineering teams already apply to bugs.
-        </p>
-        <p className="mt-3">
-          Feedback, feature requests, or just want to say hello —{" "}
-          <a
-            href="mailto:prabhu_cg@proton.me"
-            className="text-primary hover:underline"
-          >
+          Feedback, feature requests, or just want to say hello:{" "}
+          <a href="mailto:prabhu_cg@proton.me" className="font-medium text-foreground underline underline-offset-4 hover:no-underline">
             prabhu_cg@proton.me
           </a>
           .
@@ -121,9 +127,9 @@ export function AboutContent() {
   );
 }
 
-export function PrivacyContent() {
+export function PrivacyContent({ className }: { className?: string }) {
   return (
-    <div className="space-y-6 text-sm leading-relaxed text-muted-foreground">
+    <div className={cn("space-y-6 text-sm leading-relaxed text-muted-foreground", className)}>
       <section>
         <h3 className="mb-1.5 text-sm font-bold text-foreground">What we collect</h3>
         <p>
@@ -170,9 +176,9 @@ export function PrivacyContent() {
   );
 }
 
-export function TermsContent() {
+export function TermsContent({ className }: { className?: string }) {
   return (
-    <div className="space-y-6 text-sm leading-relaxed text-muted-foreground">
+    <div className={cn("space-y-6 text-sm leading-relaxed text-muted-foreground", className)}>
       <section>
         <h3 className="mb-1.5 text-sm font-bold text-foreground">Using UXLedger</h3>
         <p>

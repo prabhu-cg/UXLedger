@@ -12,11 +12,11 @@ interface MetricCardProps {
 }
 
 const accentMap = {
-  default: "bg-primary/10 text-primary",
-  red: "bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400",
-  green: "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400",
-  amber: "bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400",
-  indigo: "bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400",
+  default: "bg-primary-soft text-primary-text",
+  red: "bg-destructive-soft text-destructive",
+  green: "bg-success-soft text-success",
+  amber: "bg-warning-soft text-warning",
+  indigo: "bg-info-soft text-info",
 };
 
 export function MetricCard({
@@ -29,10 +29,10 @@ export function MetricCard({
 }: MetricCardProps) {
   return (
     <Card>
-      <CardContent className="p-6">
+      <CardContent className="p-5 sm:p-5">
         <div className="flex items-start justify-between">
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-muted-foreground truncate">{title}</p>
+            <p className="text-sm font-medium leading-snug text-muted-foreground">{title}</p>
             <p className="text-3xl font-bold mt-1 tabular-nums">{value}</p>
             {subtitle && (
               <p className="text-xs text-muted-foreground mt-1">{subtitle}</p>
@@ -41,14 +41,14 @@ export function MetricCard({
               <p
                 className={cn(
                   "text-xs font-medium mt-2",
-                  trend.value >= 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"
+                  trend.value >= 0 ? "text-success" : "text-destructive"
                 )}
               >
                 {trend.value >= 0 ? "↑" : "↓"} {Math.abs(trend.value)}% {trend.label}
               </p>
             )}
           </div>
-          <div className={cn("rounded-xl p-2.5 shrink-0 ml-4", accentMap[accent])}>
+          <div className={cn("rounded-lg p-2.5 shrink-0 ml-3", accentMap[accent])}>
             <Icon className="h-5 w-5" />
           </div>
         </div>

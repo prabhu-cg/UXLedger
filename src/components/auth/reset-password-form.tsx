@@ -37,7 +37,7 @@ export function ResetPasswordForm() {
   if (sent) {
     return (
       <div className="text-center py-8">
-        <CheckCircle2 className="mx-auto h-12 w-12 text-green-500 mb-4" />
+        <CheckCircle2 className="mx-auto h-12 w-12 text-success mb-4" />
         <h2 className="text-lg font-semibold mb-2">Check your email</h2>
         <p className="text-sm text-muted-foreground">
           We sent a password reset link to{" "}

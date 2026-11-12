@@ -8,7 +8,7 @@ export default function ResetPasswordPage() {
   return (
     <>
       <div className="mb-5">
-        <h2 className="text-lg font-semibold">Reset your password</h2>
+        <h2 className="text-lg font-extrabold tracking-[-0.025em]">Reset your password</h2>
         <p className="text-sm text-muted-foreground mt-1">
           Enter your email and we&apos;ll send you a reset link
         </p>

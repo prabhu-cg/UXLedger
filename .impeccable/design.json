@@ -1,0 +1,390 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-12T12:24:10Z",
+  "title": "Design System: UXLedger",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Burnt Orange",
+        "canonical": "#c74504",
+        "tonalRamp": [
+          "#3a1605",
+          "#6b2503",
+          "#8f3203",
+          "#a93a03",
+          "#c74504",
+          "#e0702f",
+          "#f2a67e",
+          "#fdefe7"
+        ]
+      },
+      "primary-text": {
+        "role": "primary",
+        "displayName": "Deep Terracotta",
+        "canonical": "#a93a03",
+        "tonalRamp": [
+          "#2a1002",
+          "#4f1c02",
+          "#7a2b03",
+          "#a93a03",
+          "#c74504",
+          "#dd6a2e",
+          "#f0a47e",
+          "#fdefe7"
+        ]
+      },
+      "primary-soft": {
+        "role": "primary",
+        "displayName": "Orange Tint",
+        "canonical": "#fdefe7",
+        "tonalRamp": [
+          "#c74504",
+          "#e0702f",
+          "#ee9a6d",
+          "#f6bd9f",
+          "#f9d3bf",
+          "#fbe2d3",
+          "#fdefe7",
+          "#fff7f2"
+        ]
+      },
+      "page": {
+        "role": "neutral",
+        "displayName": "Page White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#12100e",
+          "#1c1916",
+          "#27221e",
+          "#f4f2ea",
+          "#f8f6f0",
+          "#fbfaf6",
+          "#fdfdfb",
+          "#ffffff"
+        ]
+      },
+      "sand": {
+        "role": "neutral",
+        "displayName": "Sand",
+        "canonical": "#f4f2ea",
+        "tonalRamp": [
+          "#27221e",
+          "#453d35",
+          "#6f6963",
+          "#a8a097",
+          "#d6c7ab",
+          "#e8ddc8",
+          "#f4f2ea",
+          "#faf8f3"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1c1917",
+        "tonalRamp": [
+          "#1c1917",
+          "#2e2925",
+          "#444444",
+          "#5f5a54",
+          "#6f6963",
+          "#a8a097",
+          "#d6d0c7",
+          "#f4f2ea"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#e8ddc8",
+        "tonalRamp": [
+          "#453d35",
+          "#7d705c",
+          "#a39577",
+          "#d6c7ab",
+          "#e8ddc8",
+          "#efe6d4",
+          "#f4eee0",
+          "#faf7ef"
+        ]
+      },
+      "destructive": {
+        "role": "status",
+        "displayName": "Alarm Red",
+        "canonical": "#b3261e",
+        "tonalRamp": [
+          "#b3261e"
+        ]
+      },
+      "success": {
+        "role": "status",
+        "displayName": "Ledger Green",
+        "canonical": "#146c43",
+        "tonalRamp": [
+          "#146c43"
+        ]
+      },
+      "warning": {
+        "role": "status",
+        "displayName": "Amber Ochre",
+        "canonical": "#8a5a00",
+        "tonalRamp": [
+          "#8a5a00"
+        ]
+      },
+      "info": {
+        "role": "status",
+        "displayName": "Plain Blue",
+        "canonical": "#1f5f9e",
+        "tonalRamp": [
+          "#1f5f9e"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Landing hero h1 only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Marketing section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "App page titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "App text at 14px; marketing at 16px."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Badges, small buttons, captions."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-rest",
+        "value": "0 1px 2px 0 #1010140a, 0 1px 3px 0 #1010140f",
+        "purpose": "Near-invisible ambient edge under cards."
+      },
+      {
+        "name": "raised",
+        "value": "0 2px 4px -1px #1010140f, 0 8px 24px -6px #1010141f",
+        "purpose": "Interactive card hover lift."
+      },
+      {
+        "name": "app-window",
+        "value": "0 2px 4px -1px #1010140f, 0 18px 40px -14px #10101433",
+        "purpose": "Product pictures (token `shadow-window`)."
+      },
+      {
+        "name": "laptop",
+        "value": "0 26px 40px -20px #10101459",
+        "purpose": "Grounds the laptop mockup."
+      }
+    ],
+    "motion": [
+      {
+        "name": "rise",
+        "value": "0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Hero entrance, motion-allowed only."
+      },
+      {
+        "name": "nav-collapse",
+        "value": "300ms ease-in-out",
+        "purpose": "Sidebar width and label transitions."
+      },
+      {
+        "name": "state",
+        "value": "transition-colors",
+        "purpose": "Button and nav hover; reduced motion clamps to 0.01ms."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "frame",
+        "value": "1152px"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "panel-base",
+        "value": "#3a1605",
+        "purpose": "Auth panel base behind the photo."
+      },
+      {
+        "name": "panel-scrim",
+        "value": "#180902",
+        "purpose": "Auth panel scrim, mixed at 55/30/80%."
+      },
+      {
+        "name": "terracotta",
+        "value": "#a93a03",
+        "purpose": "Text on the white closing-CTA button in both themes."
+      },
+      {
+        "name": "charcoal",
+        "value": "#333333",
+        "purpose": "Laptop bezel (#3a342e in dark)."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Single orange action; darkens to terracotta on hover.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Add debt item</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:36px;padding:0 16px;border-radius:6px;border:1px solid transparent;font:500 14px Manrope,system-ui,sans-serif;cursor:pointer;transition:background-color .15s}.ds-btn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(199,69,4,.5)}.ds-btn:active{transform:translateY(1px)}.ds-btn-primary{background:#c74504;color:#fff}.ds-btn-primary:hover{background:#a93a03}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action on white with a hairline.",
+      "html": "<button class=\"ds-btn ds-btn-outline\">Export</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:36px;padding:0 16px;border-radius:6px;border:1px solid transparent;font:500 14px Manrope,system-ui,sans-serif;cursor:pointer;transition:background-color .15s}.ds-btn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(199,69,4,.5)}.ds-btn:active{transform:translateY(1px)}.ds-btn-outline{background:#fff;color:#1c1917;border-color:#e8ddc8}.ds-btn-outline:hover{background:#f4f2ea}"
+    },
+    {
+      "name": "Hero Button",
+      "kind": "button",
+      "refersTo": "button-hero",
+      "description": "48px pill used once in the marketing hero.",
+      "html": "<button class=\"ds-hero\">Get started free</button>",
+      "css": ".ds-hero{height:48px;padding:0 32px;border-radius:9999px;border:0;background:#c74504;color:#fff;font:700 16px Manrope,system-ui,sans-serif;cursor:pointer;transition:background-color .15s}.ds-hero:hover{background:#a93a03}.ds-hero:focus-visible{outline:2px solid #c74504;outline-offset:3px}"
+    },
+    {
+      "name": "Severity Badges",
+      "kind": "chip",
+      "refersTo": "badge-default",
+      "description": "20px pills: text on soft ground for severity and status.",
+      "html": "<span class=\"ds-b ds-crit\">Critical</span> <span class=\"ds-b ds-high\">High</span> <span class=\"ds-b ds-med\">Medium</span> <span class=\"ds-b ds-low\">Low</span> <span class=\"ds-b ds-ok\">Resolved</span>",
+      "css": ".ds-b{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:9999px;font:500 12px Manrope,system-ui,sans-serif}.ds-crit{background:#fdeceb;color:#b3261e}.ds-high{background:#fdefe7;color:#a93a03}.ds-med{background:#fdf3e0;color:#8a5a00}.ds-low{background:#ebf3fb;color:#1f5f9e}.ds-ok{background:#e6f4ec;color:#146c43}"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "16px radius, hairline, near-invisible ambient shadow, p-5.",
+      "html": "<div class=\"ds-card\"><p class=\"ds-card-t\">Open debt</p><p class=\"ds-card-v\">42</p></div>",
+      "css": ".ds-card{width:220px;padding:20px;border:1px solid #e8ddc8;border-radius:16px;background:#fff;color:#1c1917;box-shadow:0 1px 2px 0 #1010140a,0 1px 3px 0 #1010140f;font-family:Manrope,system-ui,sans-serif}.ds-card-t{margin:0;font-size:14px;font-weight:500;color:#6f6963}.ds-card-v{margin:4px 0 0;font-size:30px;font-weight:700;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "36px field, hairline stroke, orange focus ring.",
+      "html": "<input class=\"ds-input\" placeholder=\"Search debt items\">",
+      "css": ".ds-input{height:36px;width:240px;padding:0 10px;border:1px solid #e8ddc8;border-radius:6px;background:#fff;color:#1c1917;font:400 14px Manrope,system-ui,sans-serif}.ds-input:focus-visible{outline:none;border-color:#c74504;box-shadow:0 0 0 3px rgba(199,69,4,.5)}"
+    },
+    {
+      "name": "Sidebar Nav Item",
+      "kind": "nav",
+      "refersTo": "sidebar",
+      "description": "Quiet active state: a 5% ink wash and weight 600, never orange.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-a ds-on\" href=\"#\">Dashboard</a><a class=\"ds-nav-a\" href=\"#\">Projects</a></nav>",
+      "css": ".ds-nav{width:220px;padding:12px;background:#f4f2ea;display:flex;flex-direction:column;gap:2px}.ds-nav-a{padding:8px 12px;border-radius:6px;font:500 14px Manrope,system-ui,sans-serif;color:#6f6963;text-decoration:none}.ds-nav-a:hover{background:rgba(28,25,23,.05);color:#1c1917}.ds-nav-a:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(199,69,4,.5)}.ds-on{background:rgba(28,25,23,.05);color:#1c1917;font-weight:600}"
+    },
+    {
+      "name": "Pointer Highlight",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Headline word selected like a design-tool object: outline, corner handles, pointer.",
+      "html": "<h2 class=\"ds-h\">Fix what <span class=\"ds-ph\">matters<i class=\"ds-o\"><b class=\"ds-c ds-tl\"></b><b class=\"ds-c ds-tr\"></b><b class=\"ds-c ds-bl\"></b><b class=\"ds-c ds-br\"></b></i></span></h2>",
+      "css": ".ds-h{font:800 40px/1.1 Manrope,system-ui,sans-serif;letter-spacing:-.04em;color:#333;margin:20px}.ds-ph{position:relative;display:inline-block;padding:0 10px;margin:0 4px;color:#a93a03}.ds-o{position:absolute;inset:0;border:2px solid rgba(199,69,4,.55);border-radius:6px;pointer-events:none}.ds-c{position:absolute;width:8px;height:8px;border:1px solid #c74504;border-radius:2px;background:#fff}.ds-tl{top:-4px;left:-4px}.ds-tr{top:-4px;right:-4px}.ds-bl{bottom:-4px;left:-4px}.ds-br{bottom:-4px;right:-4px}"
+    },
+    {
+      "name": "Ruled Ledger Ground",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Hero ground: 36px hairlines fading at edges over a sand-to-white wash.",
+      "html": "<div class=\"ds-ledger\"><h3>Track UX debt.</h3></div>",
+      "css": ".ds-ledger{position:relative;width:360px;height:180px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to bottom,#f6f5ef,#fff 70%);overflow:hidden;font-family:Manrope,system-ui,sans-serif}.ds-ledger::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 35px,rgba(214,199,171,.7) 35px,rgba(214,199,171,.7) 36px);-webkit-mask-image:radial-gradient(ellipse 90% 85% at 50% 35%,#000 25%,transparent 80%);mask-image:radial-gradient(ellipse 90% 85% at 50% 35%,#000 25%,transparent 80%)}.ds-ledger h3{position:relative;margin:0;font-weight:800;font-size:28px;letter-spacing:-.03em;color:#333}"
+    },
+    {
+      "name": "Theme Menu",
+      "kind": "menu",
+      "refersTo": "button-ghost",
+      "description": "Ghost icon button opening a Light / Dark / System radio menu with a primary-text check.",
+      "html": "<button class=\"tm-btn\" aria-label=\"Change theme\">\u2600</button><div class=\"tm-menu\"><div class=\"tm-label\">Theme</div><div class=\"tm-item\">Light <span class=\"tm-check\">\u2713</span></div><div class=\"tm-item\">Dark</div><div class=\"tm-item\">System</div></div>",
+      "css": ".tm-btn{width:36px;height:36px;border:0;border-radius:6px;background:transparent;color:#333;font-size:16px}.tm-menu{margin-top:6px;width:160px;padding:4px;border:1px solid #e8ddc8;border-radius:8px;background:#fff;box-shadow:0 4px 6px -1px #1010141a,0 2px 4px -2px #1010141a;font:14px Manrope,sans-serif}.tm-label{padding:6px 10px;font-size:12px;font-weight:600;color:#5f5a54}.tm-item{display:flex;padding:8px 10px;border-radius:6px;color:#333}.tm-item:hover{background:#f4f2ea}.tm-check{margin-left:auto;color:#a93a03}"
+    },
+    {
+      "name": "FAQ Row",
+      "kind": "disclosure",
+      "refersTo": "faq",
+      "description": "Native details row between strong hairlines with a rotating plus icon.",
+      "html": "<div class=\"faq-row\"><span class=\"faq-q\">Is UXLedger free?</span><span class=\"faq-i\">+</span></div>",
+      "css": ".faq-row{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 0;border-top:1px solid #d6c7ab;font:700 18px Manrope,sans-serif;color:#333}.faq-i{display:flex;width:32px;height:32px;align-items:center;justify-content:center;border:1px solid #d6c7ab;border-radius:9999px;font-size:20px}"
+    },
+    {
+      "name": "Metric Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Dashboard metric: wrapping muted title, tabular value, tinted icon well in a status pair.",
+      "html": "<div class=\"mc\"><div><p class=\"mc-t\">Critical (Open)</p><p class=\"mc-v\">1</p></div><span class=\"mc-i\">\u2198</span></div>",
+      "css": ".mc{display:flex;justify-content:space-between;width:220px;padding:20px;border:1px solid #e8ddc8;border-radius:16px;background:#fff;box-shadow:0 1px 2px 0 #1010140a,0 1px 3px 0 #1010140f;font-family:Manrope,sans-serif}.mc-t{margin:0;font-size:14px;font-weight:500;line-height:1.35;color:#6f6963}.mc-v{margin:4px 0 0;font-size:30px;font-weight:700;color:#1c1917}.mc-i{display:flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:8px;background:#fdeceb;color:#b3261e}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Working Ledger",
+    "overview": "UXLedger looks like a ledger someone actually keeps: warm paper, ruled lines, one burnt-orange pen. Surfaces are a white page and a sand ground (#f4f2ea) separated by hairline borders (#e8ddc8), and the only loud thing on any screen is the single orange (#c74504). Manrope at weight 800 with tight tracking does the shouting; everything else is quiet.\n\nDepth is nearly flat. Cards rest on a hairline plus a 1-2px ambient shadow; only overlays and product pictures genuinely lift. Components feel refined and restrained.\n\nTwo scopes share one token set: the authenticated app (14px, ink #1c1917) and the public `.marketing` surfaces (16px, ink #333333, muted #5f5a54).",
+    "keyCharacteristics": [
+      "Warm paper and one orange voice; status colors are small, paired and soft.",
+      "Flat surfaces, hairline borders, tonal grounds (white vs sand).",
+      "Manrope only. Weight 800 and negative tracking for display; 500-600 for UI.",
+      "Light, dark and system themes from the same semantic tokens.",
+      "Real screenshots and labelled sample data, never stock proof."
+    ],
+    "rules": [
+      {
+        "name": "The One Voice Rule",
+        "body": "Orange is the only accent. Fills use #c74504; any orange text on a light ground uses #a93a03. Status hues never compete with it for the primary action.",
+        "section": "colors"
+      },
+      {
+        "name": "The Semantic Token Rule",
+        "body": "Components use semantic tokens, never raw hex. Marketing changes values by scope, not by component forks.",
+        "section": "colors"
+      },
+      {
+        "name": "The Heavy Headline Rule",
+        "body": "Weight 800 plus negative tracking belongs to display and section headings; UI chrome stays 500-600.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lift Is Earned Rule",
+        "body": "Only overlays and product pictures lift visibly. A card never gains a shadow bigger than raised, and only on hover when interactive.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use #c74504 for fills and #a93a03 for orange text on light grounds.",
+      "Do separate surfaces with hairlines (#e8ddc8) and sand (#f4f2ea) before reaching for a shadow.",
+      "Do pair every status color as text on its soft ground.",
+      "Do keep sidebar active state quiet (`bg-foreground/5`).",
+      "Do use `p-5 sm:p-5` when overriding CardContent padding.",
+      "Do label authored previews \"Sample data\" and use real screenshots for the laptop.",
+      "Do keep the 14px / 16px split between app and `.marketing`."
+    ],
+    "donts": [
+      "Don't introduce a second accent hue or use orange for large text on white at #c74504.",
+      "Don't lift ordinary cards beyond the Raised shadow, or put shadows on flat in-app chrome.",
+      "Don't put a gradient or glow on type or on the hero ground.",
+      "Don't invent customers, logos, stats, testimonials or prices in previews.",
+      "Don't hard-code hex in components when a semantic token exists."
+    ]
+  }
+}

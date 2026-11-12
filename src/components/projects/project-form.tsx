@@ -11,8 +11,8 @@ import { Button } from "@/components/ui/button";
 import type { Project } from "@/types";
 
 const PROJECT_COLORS = [
-  "#4F46E5", "#7C3AED", "#DB2777", "#DC2626",
-  "#EA580C", "#CA8A04", "#16A34A", "#0891B2",
+  "#C74504", "#4F46E5", "#7C3AED", "#DB2777",
+  "#DC2626", "#CA8A04", "#16A34A", "#0891B2",
   "#0284C7", "#475569",
 ];
 
@@ -28,7 +28,7 @@ export function ProjectForm({ defaultValues, onSubmit, submitLabel = "Save" }: P
     defaultValues: {
       name: defaultValues?.name ?? "",
       description: defaultValues?.description ?? "",
-      color: defaultValues?.color ?? "#4F46E5",
+      color: defaultValues?.color ?? "#C74504",
     },
   });
 

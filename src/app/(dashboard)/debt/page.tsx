@@ -1,5 +1,6 @@
 "use client";
 
+import { PageHeader } from "@/components/layout/page-header";
 import { useState, useEffect } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { DebtTable } from "@/components/debt/debt-table";
@@ -32,15 +33,13 @@ export default function DebtPage() {
   }, []);
 
   return (
-    <div className="p-6 max-w-[1440px] mx-auto">
-      <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
-        <div className="flex-1">
-          <h1 className="text-xl font-bold">Debt Register</h1>
-          <p className="text-sm text-muted-foreground mt-0.5">
-            All UX debt items for the selected project
-          </p>
-        </div>
-        {loading ? (
+    <div>
+      <PageHeader
+        className="mb-6"
+        title="Debt Register"
+        description="All UX debt items for the selected project"
+        actions={
+        loading ? (
           <Skeleton className="h-9 w-48" />
         ) : (
           <Select value={selectedProject} onValueChange={setSelectedProject}>
@@ -58,8 +57,9 @@ export default function DebtPage() {
               ))}
             </SelectContent>
           </Select>
-        )}
-      </div>
+        )
+        }
+      />
 
       {!loading && selectedProject ? (
         <DebtTable

@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/layout/page-header";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
@@ -22,13 +23,8 @@ export default async function SettingsPage() {
   if (!profile) redirect("/login");
 
   return (
-    <div className="p-6 max-w-2xl mx-auto space-y-6">
-      <div>
-        <h1 className="text-xl font-bold">Settings</h1>
-        <p className="text-sm text-muted-foreground mt-0.5">
-          Manage your account details.
-        </p>
-      </div>
+    <div className="max-w-2xl space-y-6">
+      <PageHeader className="mb-2" title="Settings" description="Manage your account details." />
 
       <Card>
         <CardHeader>

@@ -9,10 +9,10 @@ interface Props {
 }
 
 const SEVERITY_COLORS: Record<string, string> = {
-  critical: "#EF4444",
-  high: "#F97316",
-  medium: "#F59E0B",
-  low: "#3B82F6",
+  critical: "var(--destructive)",
+  high: "var(--primary)",
+  medium: "var(--warning)",
+  low: "var(--info)",
 };
 
 const SEVERITY_LABELS: Record<string, string> = {
@@ -26,7 +26,7 @@ export function DebtBySeverityChart({ data }: Props) {
   const formatted = data.map((d) => ({
     ...d,
     name: SEVERITY_LABELS[d.severity] ?? d.severity,
-    color: SEVERITY_COLORS[d.severity] ?? "#6366F1",
+    color: SEVERITY_COLORS[d.severity] ?? "var(--muted-foreground)",
   }));
 
   if (!data.length) {

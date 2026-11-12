@@ -33,11 +33,11 @@ const navItems = [
 
 const navLinkClass = (active: boolean, collapsed: boolean) =>
   cn(
-    "flex items-center overflow-hidden rounded-lg py-2.5 text-sm font-medium transition-[padding,gap,color,background-color] duration-300 ease-in-out",
+    "flex items-center overflow-hidden rounded-md py-2 text-sm font-medium outline-none transition-[padding,gap,color,background-color] duration-300 ease-in-out focus-visible:ring-[3px] focus-visible:ring-ring/50",
     collapsed ? "gap-0 px-4" : "gap-3 px-3",
     active
-      ? "bg-sidebar-accent text-sidebar-accent-foreground"
-      : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+      ? "bg-foreground/5 font-semibold text-foreground"
+      : "text-muted-foreground hover:bg-foreground/5 hover:text-foreground"
   );
 
 const navLabelClass = (collapsed: boolean) =>
@@ -74,7 +74,7 @@ export function Sidebar() {
       {/* Mobile overlay */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+          className="fixed inset-0 z-40 bg-black/30 backdrop-blur-[2px] lg:hidden"
           onClick={() => setSidebarOpen(false)}
           aria-hidden="true"
         />
@@ -100,7 +100,7 @@ export function Sidebar() {
             variant="ghost"
             size="icon"
             className={cn(
-              "lg:hidden text-sidebar-foreground hover:bg-sidebar-accent shrink-0 overflow-hidden transition-[max-width,opacity,margin] duration-300 ease-in-out",
+              "lg:hidden text-sidebar-foreground hover:bg-foreground/5 shrink-0 overflow-hidden transition-[max-width,opacity,margin] duration-300 ease-in-out",
               sidebarCollapsed ? "max-w-0 opacity-0 -ml-2" : "max-w-9 opacity-100"
             )}
             onClick={() => setSidebarOpen(false)}

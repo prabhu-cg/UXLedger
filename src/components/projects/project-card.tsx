@@ -54,8 +54,8 @@ export function ProjectCard({ project, debtCount = 0, onUpdate, onDelete }: Proj
 
   return (
     <>
-      <Card className={cn("group", isSample && "border-dashed bg-muted/30")}>
-        <CardContent className="p-5">
+      <Card className={cn("group transition-[border-color,box-shadow] hover:border-primary hover:shadow-raised focus-within:border-primary focus-within:shadow-raised", isSample && "border-dashed bg-muted/30")}>
+        <CardContent className="p-5 sm:p-5">
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-start gap-3 min-w-0">
               <span
@@ -67,10 +67,7 @@ export function ProjectCard({ project, debtCount = 0, onUpdate, onDelete }: Proj
                 <div className="flex items-center gap-1.5">
                   <h3 className="font-semibold text-sm truncate">{project.name}</h3>
                   {isSample && (
-                    <Badge
-                      variant="outline"
-                      className="shrink-0 border-transparent bg-blue-100 font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
-                    >
+                    <Badge variant="info" className="shrink-0">
                       Sample
                     </Badge>
                   )}

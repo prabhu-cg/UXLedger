@@ -76,7 +76,7 @@ export function DebtTable({ projectId, readOnly = false }: DebtTableProps) {
       header: "Title",
       cell: ({ row }) => (
         <button
-          className="text-left font-medium text-sm hover:text-primary transition-colors max-w-[320px] truncate block"
+          className="text-left font-medium text-sm hover:text-primary-text transition-colors max-w-[320px] truncate block"
           onClick={() => setViewItem(row.original)}
           title={row.getValue("title")}
         >
@@ -114,7 +114,7 @@ export function DebtTable({ projectId, readOnly = false }: DebtTableProps) {
         if (!due) return <span className="text-xs text-muted-foreground">—</span>;
         const overdue = new Date(due) < new Date() && row.original.status !== "resolved";
         return (
-          <span className={cn("text-xs", overdue ? "text-red-600 dark:text-red-400 font-medium" : "text-muted-foreground")}>
+          <span className={cn("text-xs", overdue ? "text-destructive font-medium" : "text-muted-foreground")}>
             {formatDate(due)}
           </span>
         );

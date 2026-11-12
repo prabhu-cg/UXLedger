@@ -47,12 +47,12 @@ export function DebtTrendChart({ data }: Props) {
           <AreaChart data={formatted} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
             <defs>
               <linearGradient id="openGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#4F46E5" stopOpacity={0.25} />
-                <stop offset="95%" stopColor="#4F46E5" stopOpacity={0} />
+                <stop offset="5%" stopColor="var(--primary)" stopOpacity={0.25} />
+                <stop offset="95%" stopColor="var(--primary)" stopOpacity={0} />
               </linearGradient>
               <linearGradient id="resolvedGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#10B981" stopOpacity={0.25} />
-                <stop offset="95%" stopColor="#10B981" stopOpacity={0} />
+                <stop offset="5%" stopColor="var(--success)" stopOpacity={0.25} />
+                <stop offset="95%" stopColor="var(--success)" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" className="stroke-border" />
@@ -72,7 +72,7 @@ export function DebtTrendChart({ data }: Props) {
               type="monotone"
               dataKey="open"
               name="Open"
-              stroke="#4F46E5"
+              stroke="var(--primary)"
               strokeWidth={2}
               fill="url(#openGrad)"
             />
@@ -80,7 +80,7 @@ export function DebtTrendChart({ data }: Props) {
               type="monotone"
               dataKey="resolved"
               name="Resolved"
-              stroke="#10B981"
+              stroke="var(--success)"
               strokeWidth={2}
               fill="url(#resolvedGrad)"
             />

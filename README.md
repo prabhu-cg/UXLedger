@@ -189,3 +189,10 @@ After your first sign-up, run `002_seed.sql` in the Supabase SQL Editor to popul
 ## License
 
 MIT
+
+---
+
+## Credits
+
+- Sign-in and sign-up panel photo: ["Website wireframe sketch on paper"](https://unsplash.com/photos/website-wireframe-sketch-on-paper-4UGmm3WRUoQ) by Compagnons on Unsplash, used under the [Unsplash License](https://unsplash.com/license).
+- Design system: the "Working Ledger" tokens and component specs are shared with [Yedara](https://github.com/prabhu-cg/Yedara).

@@ -1,7 +1,7 @@
 "use client";
 
-import { Menu, Moon, Sun, Bell } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Menu, Bell } from "lucide-react";
+import { ThemeMenu } from "@/components/layout/theme-menu";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -25,7 +25,6 @@ interface TopbarProps {
 
 export function Topbar({ profile, heading }: TopbarProps) {
   const { toggleSidebar } = useUIStore();
-  const { theme, setTheme } = useTheme();
   const router = useRouter();
 
   async function handleSignOut() {
@@ -49,29 +48,18 @@ export function Topbar({ profile, heading }: TopbarProps) {
 
       <div className="flex-1 min-w-0">
         {heading && (
-          <h1 className="text-base font-semibold truncate">{heading}</h1>
+          <h1 className="text-base font-extrabold tracking-[-0.025em] truncate">{heading}</h1>
         )}
       </div>
 
       <div className="flex items-center gap-2">
-        {/* Theme toggle */}
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          aria-label="Toggle theme"
-          className="hover:bg-primary hover:text-primary-foreground"
-        >
-          <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-        </Button>
+        <ThemeMenu />
 
         {/* Notifications */}
         <Button
           variant="ghost"
           size="icon"
           aria-label="Notifications"
-          className="hover:bg-primary hover:text-primary-foreground"
         >
           <Bell className="h-4 w-4" />
         </Button>
@@ -82,12 +70,12 @@ export function Topbar({ profile, heading }: TopbarProps) {
             <Button
               variant="ghost"
               size="icon"
-              className="group rounded-full hover:bg-primary"
+              className="rounded-full"
               aria-label="Account menu"
             >
               <Avatar className="h-8 w-8">
                 <AvatarImage src={profile?.avatar_url ?? undefined} alt={profile?.full_name ?? ""} />
-                <AvatarFallback className="group-hover:bg-transparent group-hover:text-primary-foreground">
+                <AvatarFallback>
                   {getInitials(profile?.full_name)}
                 </AvatarFallback>
               </Avatar>

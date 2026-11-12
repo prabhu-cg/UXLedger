@@ -1,5 +1,6 @@
 "use client";
 
+import { PageHeader } from "@/components/layout/page-header";
 import { useState, useEffect } from "react";
 import { Download, FileText, FileSpreadsheet, BarChart3 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
@@ -112,13 +113,12 @@ export default function ReportsPage() {
   }
 
   return (
-    <div className="p-6 max-w-[1440px] mx-auto space-y-6">
-      <div>
-        <h1 className="text-xl font-bold">Reports</h1>
-        <p className="text-sm text-muted-foreground mt-0.5">
-          Export and analyse UX debt data across your projects
-        </p>
-      </div>
+    <div className="space-y-6">
+      <PageHeader
+        className="mb-2"
+        title="Reports"
+        description="Export and analyse UX debt data across your projects"
+      />
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Card>
@@ -134,7 +134,7 @@ export default function ReportsPage() {
             <CardTitle className="text-sm font-medium text-muted-foreground">Open items</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold tabular-nums text-amber-600 dark:text-amber-400">
+            <p className="text-3xl font-bold tabular-nums text-warning">
               {filtered.filter((i) => i.status === "open" || i.status === "in_progress").length}
             </p>
           </CardContent>
@@ -144,7 +144,7 @@ export default function ReportsPage() {
             <CardTitle className="text-sm font-medium text-muted-foreground">Critical items</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold tabular-nums text-red-600 dark:text-red-400">
+            <p className="text-3xl font-bold tabular-nums text-destructive">
               {filtered.filter((i) => i.severity === "critical" && i.status !== "resolved").length}
             </p>
           </CardContent>
@@ -186,7 +186,7 @@ export default function ReportsPage() {
             </div>
           </div>
         </CardHeader>
-        <CardContent className="p-0">
+        <CardContent className="p-0 sm:p-0">
           <div className="rounded-b-xl overflow-hidden">
             <Table>
               <TableHeader>

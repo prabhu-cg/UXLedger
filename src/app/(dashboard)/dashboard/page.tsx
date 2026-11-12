@@ -13,6 +13,7 @@ import { HealthScore } from "@/components/dashboard/health-score";
 import { DebtByCategoryChart } from "@/components/dashboard/debt-by-category-chart";
 import { DebtBySeverityChart } from "@/components/dashboard/debt-by-severity-chart";
 import { DebtTrendChart } from "@/components/dashboard/debt-trend-chart";
+import { PageHeader } from "@/components/layout/page-header";
 import { ProjectFilter } from "@/components/dashboard/project-filter";
 import { calcHealthScore, type DebtItem, type DebtByCategoryData, type DebtBySeverityData, type DebtTrendData } from "@/types";
 import { subDays, format } from "date-fns";
@@ -117,16 +118,13 @@ export default async function DashboardPage({ searchParams }: Props) {
   }
 
   return (
-    <div className="p-6 space-y-6 max-w-[1440px] mx-auto">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h1 className="text-xl font-bold">Dashboard</h1>
-          <p className="text-sm text-muted-foreground mt-0.5">
-            Overview of UX debt across all your projects
-          </p>
-        </div>
-        <ProjectFilter projects={projects ?? []} selected={selectedProjectId} />
-      </div>
+    <div className="space-y-6">
+      <PageHeader
+        className="mb-2"
+        title="Dashboard"
+        description="Overview of UX debt across all your projects"
+        actions={<ProjectFilter projects={projects ?? []} selected={selectedProjectId} />}
+      />
 
       {/* Metrics */}
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">

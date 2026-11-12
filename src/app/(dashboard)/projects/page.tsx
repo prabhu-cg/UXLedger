@@ -1,5 +1,7 @@
 "use client";
 
+import { PageHeader } from "@/components/layout/page-header";
+import { EmptyState } from "@/components/layout/empty-state";
 import { useState, useEffect } from "react";
 import { Plus, FolderOpen } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
@@ -111,14 +113,12 @@ export default function ProjectsPage() {
   }
 
   return (
-    <div className="p-6 max-w-[1440px] mx-auto">
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h1 className="text-xl font-bold">Projects</h1>
-          <p className="text-sm text-muted-foreground mt-0.5">
-            {projects.length} project{projects.length !== 1 ? "s" : ""}
-          </p>
-        </div>
+    <div>
+      <PageHeader
+        className="mb-6"
+        title="Projects"
+        description={`${projects.length} project${projects.length !== 1 ? "s" : ""}`}
+        actions={
         <Sheet open={createOpen} onOpenChange={setCreateOpen}>
           <SheetTrigger asChild>
             <Button>
@@ -135,25 +135,26 @@ export default function ProjectsPage() {
             <ProjectForm onSubmit={handleCreate} submitLabel="Create project" />
           </SheetContent>
         </Sheet>
-      </div>
+        }
+      />
 
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {Array.from({ length: 6 }).map((_, i) => (
-            <Skeleton key={i} className="h-44 rounded-xl" />
+            <Skeleton key={i} className="h-44 rounded-card" />
           ))}
         </div>
       ) : projects.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-24 text-center">
-          <FolderOpen className="h-12 w-12 text-muted-foreground/40 mb-4" />
-          <h3 className="text-base font-semibold mb-1">No projects yet</h3>
-          <p className="text-sm text-muted-foreground mb-6 max-w-xs">
-            Create your first project to start logging and managing UX debt.
-          </p>
-          <Button onClick={() => setCreateOpen(true)}>
-            <Plus className="mr-2 h-4 w-4" /> Create project
-          </Button>
-        </div>
+        <EmptyState
+          icon={FolderOpen}
+          title="No projects yet"
+          description="Create your first project to start logging and managing UX debt."
+          action={
+            <Button onClick={() => setCreateOpen(true)}>
+              <Plus /> Create project
+            </Button>
+          }
+        />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {projects.map((project) => (

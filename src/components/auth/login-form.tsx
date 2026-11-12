@@ -66,7 +66,7 @@ export function LoginForm() {
                 <FormLabel>Password</FormLabel>
                 <Link
                   href="/reset-password"
-                  className="text-xs text-muted-foreground hover:text-primary hover:underline underline-offset-4"
+                  className="text-xs text-muted-foreground hover:text-primary-text hover:underline underline-offset-4"
                 >
                   Forgot password?
                 </Link>

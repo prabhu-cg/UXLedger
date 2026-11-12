@@ -2,6 +2,14 @@ import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
+  // Maintenance mode: set MAINTENANCE_MODE=true to answer every page with a 503 maintenance screen.
+  if (process.env.MAINTENANCE_MODE === "true" && !request.nextUrl.pathname.startsWith("/maintenance")) {
+    return NextResponse.rewrite(new URL("/maintenance", request.url), {
+      status: 503,
+      headers: { "Retry-After": "3600" },
+    });
+  }
+
   // Skip middleware when Supabase env vars are not yet configured
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
     return NextResponse.next({ request });
@@ -38,7 +46,11 @@ export async function middleware(request: NextRequest) {
   const isAuthRoute = pathname.startsWith("/login") ||
     pathname.startsWith("/register") ||
     pathname.startsWith("/reset-password");
-  const isPublicRoute = isAuthRoute || pathname === "/";
+  const isPublicRoute =
+    isAuthRoute ||
+    pathname === "/" ||
+    ["/about", "/privacy", "/terms", "/maintenance"].includes(pathname) ||
+    pathname.startsWith("/opengraph-image");
 
   if (!user && !isPublicRoute) {
     const url = request.nextUrl.clone();
