@@ -165,6 +165,9 @@ Flat by default. Surfaces separate by ground and 1px hairline. Clickable project
 - **Tabs:** a pill track with a hairline on the desk ground; the selected segment is `primary-soft` with `primary-text`.
 - **Navigation:** pill items. Hover is sand with strong ink; active is `primary-soft` with `primary-text` and 600 weight.
 - **Theme toggle:** a ghost icon button, moon in light mode and sun in dark, switched by the `.dark` class so first paint never mismatches. Labelled "Toggle light and dark mode".
+- **FAQ:** native `details` rows between strong hairlines; the question is DM Sans 600 at 18px, with a 32px round plus icon that rotates to a cross when open. Answers only restate claims the product already makes.
+- **App-window previews:** authored mockups of real screens (the debt register on the landing page): 20px radius, strong hairline, desk title bar with three dots and a "Sample data" chip, wrapped in a captioned figure and hidden from assistive tech.
+- **Status pages (404, 500, maintenance):** a flat desk ground, a Newsreader status code with the logo mark in a dashed halo standing in for the first zero, and pill actions. Plain markup only, so it also works inside `global-error`.
 - **Laptop mockup:** a charcoal bezel around a 16:10 capture (`public/marketing/app-dashboard-light-v2.jpg` and `app-dashboard-dark-v2.jpg`). Retake both whenever the app chrome changes, using only the locked sample projects, and rename the files so caches refresh.
 
 ## Do's and Don'ts
