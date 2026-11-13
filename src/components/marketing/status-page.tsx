@@ -26,10 +26,10 @@ export function StatusPage({
   return (
     <main
       id="main-content"
-      className="marketing status-wash relative flex min-h-svh items-center justify-center overflow-hidden px-6 py-12"
+      className="marketing relative bg-surface flex min-h-svh items-center justify-center overflow-hidden px-6 py-12"
     >
       <div className="relative flex max-w-[30rem] flex-col items-center text-center">
-        <span className="mb-7 inline-flex items-center gap-1.5 rounded-full bg-primary-soft px-3 py-1 text-[0.6875rem] font-bold tracking-[0.08em] text-primary-text uppercase before:size-1.5 before:rounded-full before:bg-primary-text before:content-['']">
+        <span className="mb-7 inline-flex items-center gap-1.5 rounded-full bg-primary-soft px-3 py-1 text-[0.6875rem] font-semibold tracking-[0.08em] text-primary-text uppercase before:size-1.5 before:rounded-full before:bg-primary-text before:content-['']">
           {eyebrow}
         </span>
 
@@ -45,7 +45,7 @@ export function StatusPage({
                 <span
                   key={i}
                   aria-hidden="true"
-                  className="text-[clamp(5rem,22vw,8rem)] leading-none font-extrabold tracking-[-0.04em] text-foreground tabular-nums select-none"
+                  className="text-[clamp(5rem,22vw,8rem)] leading-none font-display text-foreground tabular-nums select-none"
                 >
                   {d}
                 </span>
@@ -56,7 +56,7 @@ export function StatusPage({
           )}
         </div>
 
-        <h1 className="mb-2.5 text-[1.375rem] leading-snug font-bold tracking-[-0.01em] text-balance">{title}</h1>
+        <h1 className="mb-2.5 text-2xl leading-snug text-balance">{title}</h1>
         <p className="mb-8 max-w-[26rem] text-[0.9375rem] leading-relaxed text-muted-foreground">{description}</p>
 
         {actions && <div className="flex flex-wrap justify-center gap-2.5">{actions}</div>}
@@ -75,7 +75,7 @@ function MarkHalo({ large }: { large?: boolean }) {
       <span className="drift absolute bottom-[0.6rem] -left-[0.3rem] size-1.5 rounded-full bg-warning opacity-55 [animation-delay:0.6s]" />
       <LogoMark
         width={52}
-        className="drift h-auto w-[55%] drop-shadow-[0_10px_14px_rgb(28_25_23/0.14)]"
+        className="drift h-auto w-[55%] "
       />
     </span>
   );

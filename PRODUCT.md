@@ -19,14 +19,14 @@ UX debt usually lives in a spreadsheet nobody opens twice, a buried Slack thread
 Teams create one project per product or surface, log debt items with rich-text descriptions, screenshots and comments, watch the dashboard (health score, debt by category and severity, 30-day trend), and export reports for reviews and roadmap planning.
 
 ## Capabilities and Constraints
-Live features: projects with a colour; a debt register (9 categories, 4 severities, 5 statuses, owner, due date); rich-text descriptions; attachments up to 10MB per item; threaded comments; a 0-100 health score; dashboard charts; CSV and Excel export; light, dark and system themes.
+Live features: projects with a colour; a debt register (9 categories, 4 severities, 5 statuses, owner, due date); rich-text descriptions; attachments up to 10MB per item; threaded comments; a 0-100 health score; dashboard charts; CSV and Excel export; light and dark themes.
 Health score: starts at 100 and deducts for every item that is not resolved or won't-fix (critical 10, high 5, medium 2, low 1), floored at 0.
 Two read-only sample projects (Mobile Banking App, Design System — Bedrock) are locked against edits.
 Auth is Supabase (email and password) with row-level security isolating each account's data. Stack: Next.js 15 App Router, Tailwind 4, Supabase, Recharts, Tiptap, deployed on Vercel.
 Pricing: Free only for now. No paid plans are announced; marketing must not show prices or plan tables.
 
 ## Brand Commitments
-Name: UXLedger (UX in ink, Ledger in the accent). Logo: the checklist-document mark in `public/logo.svg` and the `Logo` component. Manrope. Primary orange #C74504. The design system is shared with Yedara ("The Working Ledger" tokens, see DESIGN.md).
+Name: UXLedger (UX in ink, Ledger in the accent). Logo: the checklist-document mark in `public/logo.svg` and the `Logo` component. Newsreader for headlines and DM Sans for everything else. Primary amber #E8B923 (a fill, never text; ochre #826400 for accent text). The design system is the SiteNest "Butter" system shared with Assessly ("White Paper on a Butter Desk", see DESIGN.md).
 
 ## Evidence on Hand
 No customers, testimonials, usage statistics, case studies, integrations or benchmarks exist, and none may be invented. Product previews are real screenshots of the app or authored mockups, always labelled as sample data. The sign-in photograph (`public/auth/panel.jpg`, Compagnons on Unsplash, Unsplash License) is atmosphere, never presented as a customer or study.

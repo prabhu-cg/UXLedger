@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { DM_Sans, Newsreader } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 
-const manrope = Manrope({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  weight: "500",
+  variable: "--font-newsreader",
   display: "swap",
 });
 
@@ -36,11 +43,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${manrope.variable} font-sans`}>
+      <body className={`${dmSans.variable} ${newsreader.variable} font-sans`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
-          enableSystem
+          themes={["light", "dark"]}
+          enableSystem={false}
+          storageKey="uxledger-theme"
           disableTransitionOnChange
         >
           {children}

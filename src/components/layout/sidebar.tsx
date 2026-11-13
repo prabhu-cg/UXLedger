@@ -33,11 +33,11 @@ const navItems = [
 
 const navLinkClass = (active: boolean, collapsed: boolean) =>
   cn(
-    "flex items-center overflow-hidden rounded-md py-2 text-sm font-medium outline-none transition-[padding,gap,color,background-color] duration-300 ease-in-out focus-visible:ring-[3px] focus-visible:ring-ring/50",
+    "flex items-center overflow-hidden rounded-full py-2 text-sm font-medium outline-none transition-[padding,gap,color,background-color] duration-300 ease-in-out focus-visible:ring-[3px] focus-visible:ring-ring",
     collapsed ? "gap-0 px-4" : "gap-3 px-3",
     active
-      ? "bg-foreground/5 font-semibold text-foreground"
-      : "text-muted-foreground hover:bg-foreground/5 hover:text-foreground"
+      ? "bg-primary-soft font-semibold text-primary-text"
+      : "text-muted-foreground hover:bg-muted hover:text-foreground"
   );
 
 const navLabelClass = (collapsed: boolean) =>
@@ -74,7 +74,7 @@ export function Sidebar() {
       {/* Mobile overlay */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/30 backdrop-blur-[2px] lg:hidden"
+          className="fixed inset-0 z-40 bg-black/40 lg:hidden"
           onClick={() => setSidebarOpen(false)}
           aria-hidden="true"
         />
@@ -85,7 +85,7 @@ export function Sidebar() {
         className={cn(
           "fixed inset-y-0 left-0 z-50 flex flex-col bg-sidebar border-r border-sidebar-border transition-[transform,width] duration-300 ease-in-out lg:static lg:translate-x-0",
           sidebarOpen ? "translate-x-0" : "-translate-x-full",
-          sidebarCollapsed ? "w-[72px]" : "w-64"
+          sidebarCollapsed ? "w-[72px]" : "w-60"
         )}
       >
         {/* Header */}
@@ -100,7 +100,7 @@ export function Sidebar() {
             variant="ghost"
             size="icon"
             className={cn(
-              "lg:hidden text-sidebar-foreground hover:bg-foreground/5 shrink-0 overflow-hidden transition-[max-width,opacity,margin] duration-300 ease-in-out",
+              "lg:hidden text-sidebar-foreground hover:bg-muted shrink-0 overflow-hidden transition-[max-width,opacity,margin] duration-300 ease-in-out",
               sidebarCollapsed ? "max-w-0 opacity-0 -ml-2" : "max-w-9 opacity-100"
             )}
             onClick={() => setSidebarOpen(false)}

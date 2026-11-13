@@ -15,7 +15,6 @@ import { Badge } from "@/components/ui/badge";
 import { AppWindow, PreviewFigure } from "@/components/marketing/app-window";
 import { FRAME, Lede, Section, SectionHeading } from "@/components/marketing/frame";
 import { LaptopMockup } from "@/components/marketing/laptop-mockup";
-import { PointerHighlight } from "@/components/marketing/pointer-highlight";
 import "./marketing.css";
 import { MarketingHeader } from "@/components/layout/marketing-header";
 import { MarketingFooter } from "@/components/layout/marketing-footer";
@@ -141,16 +140,15 @@ export default async function LandingPage() {
         <section className="hero-aura overflow-hidden">
           <div className={`${FRAME} pt-20 pb-20 text-center sm:pt-28 sm:pb-28`}>
             <div className="rise mx-auto max-w-4xl">
-              <h1 className="text-[clamp(2.5rem,6.2vw,4.75rem)] leading-[1.04] font-extrabold tracking-[-0.04em]">
-                Track UX debt. Fix what
-                <PointerHighlight>matters</PointerHighlight>
+              <h1 className="text-5xl leading-none sm:text-7xl">
+                Track UX debt. Fix what <span className="text-primary-text">matters.</span>
               </h1>
               <Lede className="mx-auto mt-8 text-[1.125rem] sm:text-[1.25rem]">
                 UXLedger is where product and design teams log usability, accessibility, and content issues,
                 prioritise them by severity, and show the product getting better over time.
               </Lede>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
-                <Button asChild className="h-12 rounded-full px-8 text-base font-bold">
+                <Button asChild className="h-[52px] px-8 text-base">
                   <Link href="/register">
                     Get started free
                     <ArrowRight />
@@ -168,8 +166,8 @@ export default async function LandingPage() {
 
             <div className="rise rise-delay mt-16">
               <LaptopMockup
-                src="/marketing/app-dashboard.jpg"
-                darkSrc="/marketing/app-dashboard-dark.jpg"
+                src="/marketing/app-dashboard-light-v2.jpg"
+                darkSrc="/marketing/app-dashboard-dark-v2.jpg"
                 alt="The UXLedger dashboard: debt totals, a product health score, and charts by category, severity and trend."
               />
               <p className="mt-8 text-sm text-muted-foreground">
@@ -180,7 +178,7 @@ export default async function LandingPage() {
         </section>
 
         {/* Features */}
-        <Section id="features" tone="sand" labelledBy="features-title">
+        <Section id="features" labelledBy="features-title">
           <SectionHeading id="features-title" className="max-w-[18ch]">
             Everything you need to manage UX debt.
           </SectionHeading>
@@ -188,10 +186,10 @@ export default async function LandingPage() {
             {features.map((feature) => (
               <article key={feature.title} className="border-t border-border-strong pt-6">
                 <div className="flex items-center gap-3">
-                  <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-foreground text-background">
+                  <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-primary-text">
                     <feature.icon className="size-5" aria-hidden />
                   </span>
-                  <h3 className="text-xl font-extrabold tracking-[-0.025em]">{feature.title}</h3>
+                  <h3 className="text-xl font-semibold">{feature.title}</h3>
                 </div>
                 <p className="mt-4 max-w-[46ch] leading-relaxed text-muted-foreground">{feature.description}</p>
               </article>
@@ -200,7 +198,7 @@ export default async function LandingPage() {
         </Section>
 
         {/* Workflow */}
-        <Section id="how-it-works" labelledBy="how-title">
+        <Section id="how-it-works" tone="sand" labelledBy="how-title">
           <SectionHeading id="how-title" className="max-w-[20ch]">
             From messy notes to a clean register in minutes.
           </SectionHeading>
@@ -208,7 +206,7 @@ export default async function LandingPage() {
             {steps.map((step) => (
               <li key={step.title} className="relative border-t-2 border-primary pt-8">
                 <span aria-hidden className="absolute -top-[7px] left-0 size-3 rounded-full bg-primary" />
-                <h3 className="text-xl font-extrabold tracking-[-0.025em]">{step.title}</h3>
+                <h3 className="text-xl font-semibold">{step.title}</h3>
                 <p className="mt-3 leading-relaxed text-muted-foreground">{step.description}</p>
               </li>
             ))}
@@ -216,7 +214,7 @@ export default async function LandingPage() {
         </Section>
 
         {/* Differentiation */}
-        <Section tone="sand" labelledBy="why-title">
+        <Section labelledBy="why-title">
           <div className="grid gap-16 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-5">
               <SectionHeading id="why-title">See product health. Not just a spreadsheet.</SectionHeading>
@@ -255,7 +253,7 @@ export default async function LandingPage() {
         </Section>
 
         {/* FAQ */}
-        <Section id="faq" labelledBy="faq-title">
+        <Section id="faq" tone="sand" labelledBy="faq-title">
           <div className="grid gap-12 lg:grid-cols-12">
             <SectionHeading id="faq-title" className="lg:col-span-4">
               Questions, answered.
@@ -263,7 +261,7 @@ export default async function LandingPage() {
             <div className="faq lg:col-span-8">
               {faqs.map((item) => (
                 <details key={item.q} className="group border-t border-border-strong last:border-b">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-lg font-bold outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-lg font-semibold outline-none focus-visible:ring-[3px] focus-visible:ring-ring">
                     {item.q}
                     <span
                       aria-hidden
@@ -280,29 +278,25 @@ export default async function LandingPage() {
         </Section>
 
         {/* Final CTA */}
-        <section className="on-primary bg-primary text-primary-foreground" aria-labelledby="cta-title">
+        <section className="bg-background" aria-labelledby="cta-title">
           <div className={`${FRAME} py-20 text-center sm:py-24`}>
             <h2
               id="cta-title"
-              className="mx-auto max-w-[20ch] text-[clamp(2rem,4.6vw,3.25rem)] leading-[1.05] font-extrabold tracking-[-0.03em]"
+              className="mx-auto max-w-[20ch] text-4xl leading-[1.1] sm:text-5xl"
             >
               Start tracking your UX debt today
             </h2>
-            <p className="mx-auto mt-5 max-w-[48ch] text-lg text-primary-foreground/90">
+            <p className="mx-auto mt-5 max-w-[48ch] text-lg text-muted-foreground">
               Free to get started. No credit card required.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Button asChild className="h-11 bg-white px-6 font-bold text-[var(--terracotta)] hover:bg-white/90">
+              <Button asChild className="px-6">
                 <Link href="/register">
                   Get started free
                   <ArrowRight />
                 </Link>
               </Button>
-              <Button
-                asChild
-                variant="ghost"
-                className="h-11 border-white/70 px-6 font-bold text-primary-foreground hover:bg-white/10"
-              >
+              <Button asChild variant="outline" className="px-6">
                 <Link href="/login">Sign in</Link>
               </Button>
             </div>

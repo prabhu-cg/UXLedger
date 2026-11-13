@@ -54,7 +54,7 @@ export function ProjectCard({ project, debtCount = 0, onUpdate, onDelete }: Proj
 
   return (
     <>
-      <Card className={cn("group transition-[border-color,box-shadow] hover:border-primary hover:shadow-raised focus-within:border-primary focus-within:shadow-raised", isSample && "border-dashed bg-muted/30")}>
+      <Card className={cn("group transition-[border-color,box-shadow] hover:-translate-y-0.5 hover:border-border-strong hover:shadow-raised focus-within:border-border-strong focus-within:shadow-raised motion-reduce:hover:translate-y-0", isSample && "border-dashed bg-muted/30")}>
         <CardContent className="p-5 sm:p-5">
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-start gap-3 min-w-0">

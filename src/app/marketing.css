@@ -1,54 +1,29 @@
 /*
- * Marketing tokens (from Yedara's DESIGN.md). Scoped to `.marketing` so the authenticated app keeps its
- * own palette: these re-point the shared semantic tokens (bg-background, text-primary-text ...) to the
- * public-site values, so the shared Button / Badge components work here unchanged.
- * The app diverges only in foreground (#1c1917), muted text (#6f6963) and a 14px base.
+ * Marketing scope. The "Butter" tokens in globals.css already cover the public site, so this file only
+ * adds what is specific to it: the airier 16px/1.6 base, selection, focus offset, the hero entrance,
+ * the FAQ plus-to-cross and the device mockup's bezel colour.
+ * Flat pages: no gradients, no glow.
  */
 .marketing {
-  --foreground: #333333;
-  --card-foreground: #333333;
-  --popover-foreground: #333333;
-  --secondary-foreground: #333333;
-  --muted-foreground: #5f5a54;
-  --input: #d6c7ab;
-  --brand-ink: #333333;
+  --charcoal: #353335;
   background: var(--background);
-  color: var(--foreground);
+  color: var(--ink);
   font-size: 1rem;
   line-height: 1.6;
 }
 
 .dark .marketing {
-  --foreground: #faf7f2;
-  --card-foreground: #faf7f2;
-  --popover-foreground: #faf7f2;
-  --secondary-foreground: #faf7f2;
-  --brand-ink: #e7e0d6;
-  --secondary: #1f1b18;
-  --muted: #1a1714;
-  --muted-foreground: #a8a097;
-  --input: #453d35;
+  --charcoal: #2e2b26;
 }
 
 .marketing h1,
-.marketing h2,
-.marketing h3 {
-  color: inherit;
+.marketing h2 {
   text-wrap: balance;
 }
 
-.marketing ::selection {
-  background: var(--primary);
-  color: #ffffff;
-}
-
 .marketing :focus-visible {
-  outline: 2px solid var(--ring);
+  outline: 3px solid var(--ring);
   outline-offset: 3px;
-}
-
-.marketing .on-primary :focus-visible {
-  outline-color: #ffffff;
 }
 
 /* Hero entrance: visible by default, animated only when motion is allowed. */
@@ -68,49 +43,9 @@
   }
 }
 
-/*
- * Hero ground: a ruled ledger page. Hairlines every 36px that fade toward the edges and the bottom,
- * over a soft sand-to-page wash. No glow, no gradient on type.
- */
+/* The hero sits on the desk (pale butter) ground. */
 .hero-aura {
-  position: relative;
-  isolation: isolate;
-}
-.hero-aura::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent 35px,
-    color-mix(in oklab, var(--border-strong) 70%, transparent) 35px,
-    color-mix(in oklab, var(--border-strong) 70%, transparent) 36px
-  );
-  mask-image: radial-gradient(ellipse 90% 85% at 50% 35%, #000 25%, transparent 80%);
-}
-.hero-aura::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
-  background: linear-gradient(to bottom, color-mix(in oklab, var(--muted) 85%, var(--background)) 0%, var(--background) 70%);
-}
-
-.dark .marketing .hero-aura::before {
-  opacity: 0.5;
-}
-
-/* Laptop bezel, and the terracotta that stays constant on the white CTA button in both themes. */
-.marketing {
-  --charcoal: #333333;
-  --terracotta: #a93a03;
-}
-.dark .marketing {
-  --charcoal: #3a342e;
+  background: var(--surface);
 }
 
 /* Native <details> FAQ: rotate the plus into a cross. */
@@ -121,14 +56,6 @@
   transform: rotate(45deg);
 }
 
-/* Status pages (404, 500, maintenance): a soft warm wash behind the content, and a gentle drift. */
-.status-wash {
-  background: radial-gradient(
-    60% 50% at 50% 38%,
-    color-mix(in oklab, var(--primary) 7%, var(--background)) 0%,
-    var(--background) 70%
-  );
-}
 @media (prefers-reduced-motion: no-preference) {
   .drift {
     animation: drift 3.4s ease-in-out infinite alternate;

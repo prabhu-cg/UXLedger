@@ -141,7 +141,7 @@ export function Attachments({ debtItemId, readOnly = false }: AttachmentsProps) 
       ) : (
         <ul className="space-y-1.5">
           {attachments.map((a) => (
-            <li key={a.id} className="flex items-center gap-3 rounded-lg border border-border px-3 py-2 bg-muted/30">
+            <li key={a.id} className="flex items-center gap-3 rounded-lg border border-border px-3 py-2 bg-surface">
               <FileIcon className="h-4 w-4 text-muted-foreground shrink-0" />
               <div className="flex-1 min-w-0">
                 <p className="text-xs font-medium truncate">{a.file_name}</p>

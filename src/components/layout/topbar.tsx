@@ -35,7 +35,7 @@ export function Topbar({ profile, heading }: TopbarProps) {
   }
 
   return (
-    <header className="flex h-16 items-center gap-4 border-b border-border bg-background px-4 lg:px-6 shrink-0">
+    <header className="flex h-14 items-center gap-4 border-b border-border bg-background px-4 lg:px-6 shrink-0">
       <Button
         variant="ghost"
         size="icon"
@@ -48,7 +48,7 @@ export function Topbar({ profile, heading }: TopbarProps) {
 
       <div className="flex-1 min-w-0">
         {heading && (
-          <h1 className="text-base font-extrabold tracking-[-0.025em] truncate">{heading}</h1>
+          <h1 className="font-display text-lg truncate">{heading}</h1>
         )}
       </div>
 

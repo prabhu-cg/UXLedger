@@ -27,8 +27,8 @@ export function MarketingHeader() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/92 backdrop-blur-md">
-      <div className={cn(FRAME, "flex h-16 items-center justify-between gap-4")}>
+    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
+      <div className={cn(FRAME, "flex h-14 items-center justify-between gap-4")}>
         <Link href="/" aria-label="UXLedger home" className="rounded-md">
           <Logo size="sm" showTagline={false} />
         </Link>
@@ -38,7 +38,7 @@ export function MarketingHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-md px-3 py-2 text-[15px] font-semibold text-foreground/80 transition-colors hover:text-foreground"
+              className="rounded-full px-3 py-2 text-[15px] font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             >
               {item.label}
             </Link>

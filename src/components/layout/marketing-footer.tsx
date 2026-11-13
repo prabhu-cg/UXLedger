@@ -47,7 +47,7 @@ export function MarketingFooter() {
           <nav aria-label="Footer" className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4">
             {COLUMNS.map((column) => (
               <div key={column.title}>
-                <h2 className="text-sm font-bold">{column.title}</h2>
+                <h2 className="text-sm font-semibold">{column.title}</h2>
                 <ul className="mt-4 space-y-3">
                   {column.links.map((link) => (
                     <li key={link.href}>

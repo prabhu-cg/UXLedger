@@ -22,7 +22,7 @@ A production-grade UX Debt Management SaaS built with Next.js 15, Supabase, and 
 | Rich Text | Tiptap |
 | Icons | Lucide React |
 | Export | xlsx |
-| Font | Manrope (Google Fonts) |
+| Font | Newsreader + DM Sans (Google Fonts) |
 
 ---
 

@@ -4,8 +4,8 @@ import { Logo } from "@/components/layout/logo";
 
 /**
  * The brand panel on the auth pages (from `lg` up): a photograph of hand-drawn website wireframes
- * and an orange pen, the raw material UX debt is found in. A strong terracotta multiply turns the
- * white paper to burnt orange, and a dark scrim keeps the white text readable on every part of it.
+ * and a pen, the raw material UX debt is found in, under a flat charcoal scrim that keeps the white
+ * text readable on every part of it.
  * The photo is atmosphere, not proof: it shows a sketchbook and no faces.
  *
  * Photo: "Website wireframe sketch on paper" by Compagnons on Unsplash
@@ -23,15 +23,8 @@ export function AuthAside() {
         sizes="58vw"
         className="object-cover object-[55%_50%]"
       />
-      <div aria-hidden="true" className="absolute inset-0 bg-primary opacity-90 mix-blend-multiply" />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to bottom, color-mix(in srgb, var(--panel-scrim) 55%, transparent), color-mix(in srgb, var(--panel-scrim) 30%, transparent) 52%, color-mix(in srgb, var(--panel-scrim) 80%, transparent))",
-        }}
-      />
+      {/* Flat charcoal scrim (no gradient, no tint) keeps the white type above 4.5:1. */}
+      <div aria-hidden="true" className="absolute inset-0 bg-[var(--panel-scrim)]/75" />
 
       <Link
         href="/"
@@ -48,13 +41,13 @@ export function AuthAside() {
         >
           &ldquo;
         </span>
-        <blockquote className="-mt-6 text-[1.6rem] leading-snug font-semibold text-white [text-shadow:0_1px_14px_rgb(0_0_0/0.35)]">
+        <blockquote className="-mt-6 font-display text-[1.75rem] leading-snug text-white">
           Track what&apos;s broken, fix what matters, ship better experiences.
         </blockquote>
-        <p className="mt-5 text-sm font-medium tracking-wide text-white/75">— The UXLedger philosophy</p>
+        <p className="mt-5 text-sm font-medium tracking-wide text-white/80">— The UXLedger philosophy</p>
       </div>
 
-      <p className="relative text-xs text-white/60">
+      <p className="relative text-xs text-white/70">
         © {new Date().getFullYear()} UXLedger. All rights reserved.
       </p>
     </div>

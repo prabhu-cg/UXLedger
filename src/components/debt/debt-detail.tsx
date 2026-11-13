@@ -27,7 +27,7 @@ export function DebtDetail({ item, readOnly = false }: DebtDetailProps) {
       <div className="flex flex-wrap gap-2 mt-1">
         <SeverityBadge severity={item.severity} />
         <StatusBadge status={item.status} />
-        <span className="inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-semibold text-muted-foreground">
+        <span className="inline-flex items-center rounded-full border border-border-strong px-2 py-0.5 text-xs font-semibold text-muted-foreground">
           {CATEGORY_LABELS[item.category]}
         </span>
       </div>

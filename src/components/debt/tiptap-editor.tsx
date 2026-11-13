@@ -86,16 +86,16 @@ export function TiptapEditor({
   ];
 
   return (
-    <div className="border border-input rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-1">
+    <div className="border border-input bg-card rounded-lg overflow-hidden focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/40">
       {!readOnly && (
-        <div className="flex items-center gap-0.5 px-2 py-1.5 border-b border-border bg-muted/50">
+        <div className="flex items-center gap-0.5 px-2 py-1.5 border-b border-border bg-surface">
           {tools.map(({ icon: Icon, label, action, active }) => (
             <Button
               key={label}
               type="button"
               variant="ghost"
               size="icon"
-              className={cn("h-7 w-7", active && "bg-accent text-accent-foreground")}
+              className={cn("h-7 w-7 rounded-md", active && "bg-primary-soft text-primary-text hover:bg-primary-soft")}
               onClick={action}
               aria-label={label}
               aria-pressed={active}

@@ -43,7 +43,7 @@ export default function DebtPage() {
           <Skeleton className="h-9 w-48" />
         ) : (
           <Select value={selectedProject} onValueChange={setSelectedProject}>
-            <SelectTrigger className="w-56">
+            <SelectTrigger className="w-64">
               <SelectValue placeholder="Select project" />
             </SelectTrigger>
             <SelectContent>

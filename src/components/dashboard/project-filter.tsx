@@ -26,7 +26,7 @@ export function ProjectFilter({ projects, selected }: ProjectFilterProps) {
 
   return (
     <Select value={selected} onValueChange={handleChange}>
-      <SelectTrigger className="h-9 w-[200px]">
+      <SelectTrigger className="w-56">
         <SelectValue placeholder="All projects" />
       </SelectTrigger>
       <SelectContent>

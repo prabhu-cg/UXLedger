@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 /** The page column shared by every marketing section. */
-export const FRAME = "mx-auto w-full max-w-[1152px] px-5 sm:px-6 lg:px-8";
+export const FRAME = "mx-auto w-full max-w-screen-xl px-5 sm:px-6 lg:px-8";
 
 export function Section({
   children,
@@ -20,7 +20,7 @@ export function Section({
     <section
       id={id}
       aria-labelledby={labelledBy}
-      className={cn("scroll-mt-20", tone === "sand" && "border-y border-border bg-muted", className)}
+      className={cn("scroll-mt-20", tone === "sand" && "border-y border-border bg-surface", className)}
     >
       <div className={cn(FRAME, "py-20 sm:py-28")}>{children}</div>
     </section>
@@ -40,7 +40,7 @@ export function SectionHeading({
   return (
     <h2
       id={id}
-      className={cn("text-[clamp(1.875rem,4.2vw,3rem)] leading-[1.08] font-extrabold tracking-[-0.03em]", className)}
+      className={cn("text-4xl leading-[1.1]", className)}
     >
       {children}
     </h2>
@@ -64,7 +64,7 @@ export function ReadPage({
   return (
     <div className={cn(FRAME, "py-16 sm:py-24")}>
       <div className="max-w-[68ch]">
-        <h1 className="text-[clamp(2.25rem,5vw,3.5rem)] leading-[1.05] font-extrabold tracking-[-0.035em] text-balance">
+        <h1 className="text-4xl leading-[1.05] text-balance sm:text-5xl">
           {title}
         </h1>
         {lede && <Lede className="mt-5">{lede}</Lede>}

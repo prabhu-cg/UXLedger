@@ -46,7 +46,7 @@ export function Logo({
       >
         <span
           className={cn(
-            "font-bold tracking-tight",
+            "font-semibold tracking-tight",
             size === "xs"
               ? "text-sm"
               : size === "sm"

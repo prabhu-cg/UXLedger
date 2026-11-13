@@ -16,7 +16,7 @@ export default function ResetPasswordPage() {
       <ResetPasswordForm />
       <p className="mt-6 text-center text-sm text-muted-foreground">
         Remembered it?{" "}
-        <Link href="/login" className="text-primary font-medium hover:underline underline-offset-4">
+        <Link href="/login" className="text-primary-text font-medium hover:underline underline-offset-4">
           Back to sign in
         </Link>
       </p>

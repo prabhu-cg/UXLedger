@@ -165,7 +165,7 @@ export default function ReportsPage() {
             </div>
             <div className="flex flex-wrap gap-2 items-center">
               <Select value={selectedProject} onValueChange={setSelectedProject}>
-                <SelectTrigger className="h-9 w-44">
+                <SelectTrigger className="w-48">
                   <SelectValue placeholder="Filter by project" />
                 </SelectTrigger>
                 <SelectContent>

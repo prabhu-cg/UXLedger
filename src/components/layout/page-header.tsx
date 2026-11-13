@@ -32,7 +32,7 @@ export function PageHeader({
       )}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0 space-y-1.5">
-          <h1 className="text-[28px] leading-tight font-bold [overflow-wrap:anywhere]">{title}</h1>
+          <h1 className="text-2xl leading-tight [overflow-wrap:anywhere]">{title}</h1>
           {meta}
           {description && <p className="max-w-prose text-[15px] leading-6 text-muted-foreground">{description}</p>}
         </div>

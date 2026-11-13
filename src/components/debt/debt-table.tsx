@@ -229,14 +229,14 @@ export function DebtTable({ projectId, readOnly = false }: DebtTableProps) {
                 placeholder="Search debt items..."
                 value={globalFilter}
                 onChange={(e) => setGlobalFilter(e.target.value)}
-                className="pl-9 h-9 w-56"
+                className="pl-9 w-56"
               />
             </div>
             <Select
               value={(table.getColumn("severity")?.getFilterValue() as string) ?? "all"}
               onValueChange={(v) => table.getColumn("severity")?.setFilterValue(v === "all" ? undefined : v)}
             >
-              <SelectTrigger className="h-9 w-[130px]">
+              <SelectTrigger className="w-44">
                 <SlidersHorizontal className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
                 <SelectValue placeholder="Severity" />
               </SelectTrigger>
@@ -249,7 +249,7 @@ export function DebtTable({ projectId, readOnly = false }: DebtTableProps) {
               value={(table.getColumn("status")?.getFilterValue() as string) ?? "all"}
               onValueChange={(v) => table.getColumn("status")?.setFilterValue(v === "all" ? undefined : v)}
             >
-              <SelectTrigger className="h-9 w-[130px]">
+              <SelectTrigger className="w-44">
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
               <SelectContent>

@@ -17,7 +17,7 @@ export function LaptopMockup({ src, darkSrc, alt }: { src: string; darkSrc: stri
       </div>
       <div
         aria-hidden="true"
-        className="relative -ml-[5%] h-2.5 w-[110%] rounded-b-[1.4rem] bg-gradient-to-b from-border-strong to-border shadow-laptop sm:h-4"
+        className="relative -ml-[5%] h-2.5 w-[110%] rounded-b-[1.4rem] bg-border-strong shadow-laptop sm:h-4"
       >
         <span className="absolute top-0 left-1/2 h-1 w-20 -translate-x-1/2 rounded-b-md bg-foreground/20 sm:h-1.5 sm:w-32" />
       </div>

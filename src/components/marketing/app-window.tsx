@@ -35,11 +35,11 @@ export function AppWindow({
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-2xl border border-border-strong bg-card text-left shadow-window",
+        "overflow-hidden rounded-card border border-border-strong bg-card text-left shadow-window",
         className,
       )}
     >
-      <div className="flex items-center gap-2 border-b border-border bg-muted px-3.5 py-2.5">
+      <div className="flex items-center gap-2 border-b border-border bg-surface px-3.5 py-2.5">
         <span className="size-2.5 rounded-full bg-border-strong" />
         <span className="size-2.5 rounded-full bg-border-strong" />
         <span className="size-2.5 rounded-full bg-border-strong" />

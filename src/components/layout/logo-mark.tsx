@@ -15,7 +15,7 @@ export function LogoMark({
   const markColor = variant === "light" ? "#ffffff" : "var(--brand-ink)";
   // On the "light" variant the mark sits on an orange brand background,
   // so the checkmark accent must be white to stay visible against it.
-  const checkmarkColor = variant === "light" ? "#ffffff" : "#C74504";
+  const checkmarkColor = variant === "light" ? "#ffffff" : "var(--primary)";
 
   return (
     <svg
